@@ -468,12 +468,7 @@ watch(
                   row[colm?.field]
                 }}</span>
                 <span v-else-if="colm?.type === 'file'">
-                  <img
-                    class="table-icon"
-                    :src="'/images/icons/files/' + row[colm?.field] + '-beak.svg'"
-                    alt=""
-                    @error.once="$event.target.src = '/images/icons/files/img-beak.png'"
-                  />
+                  <img class="table-icon" :src="'/images/icons/files/' + row[colm?.field] + '-beak.svg'" alt="" />
                 </span>
                 <span v-else class="dark-text capital">{{ row[colm?.field] }}</span>
               </td>
@@ -514,7 +509,7 @@ watch(
 
   .table-icon {
     height: 32px;
-    weight: 32px;
+    width: 32px;
   }
 
   .table-filters {

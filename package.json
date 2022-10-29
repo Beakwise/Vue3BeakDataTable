@@ -1,7 +1,7 @@
 {
   "name": "vue3-beakdatatable",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
   "files": ["dist"],
   "main": "./dist/vue3-beakdatatable-lib.umd.js",
