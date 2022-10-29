@@ -1,0 +1,30 @@
+{
+  "error": {
+    "network": "The service could not be accessed, check your internet access",
+    "system": "System error occurred, please try again later"
+  },
+  "button": {
+    "discard": "Return",
+    "savechanges": "Save Changes",
+    "goback": "Go Back",
+    "cancel": "Cancel",
+    "update": "Update",
+    "create": "Create New"
+  },
+  "paging": {
+    "placeholder": "Set Number of Records",
+    "records": "Records",
+    "nodata1": "Record Not Found",
+    "nodata2": "No Records Found for Search Result",
+    "showlabel": "[ Shown: {start} - {end} ] [ Listed: {total} ] [ Total Quantity: {gtotal} ]"
+  },
+  "modalmenu": {
+    "view": "View Detail",
+    "edit": "Update",
+    "search": "Search ...",
+    "asearch": "Detailed Search",
+    "filter": "Filter ...",
+    "close": "Close"
+  },
+  "select-language": "Select Language"
+}

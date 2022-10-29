@@ -1,0 +1,30 @@
+{
+  "error": {
+    "network": "Auf den Dienst konnte nicht zugegriffen werden, überprüfen Sie Ihren Internetzugang",
+    "system": "Systemfehler aufgetreten, bitte versuchen Sie es später erneut"
+  },
+  "button": {
+    "discard": "Zurück",
+    "savechanges": "Änderungen speichern",
+    "goback": "Zurück",
+    "cancel": "Stornieren",
+    "update": "Aktualisieren",
+    "create": "Neu Erstellen"
+  },
+  "paging": {
+    "placeholder": "Anzahl der Datensätze festlegen",
+    "records": "Aufzeichnungen",
+    "nodata1": "Datensatz nicht gefunden",
+    "nodata2": "Keine Datensätze für Suchergebnis gefunden",
+    "showlabel": "[ Angezeigt: {start} - {end} ] [ Aufgelistet: {total} ] [ Gesamtmenge: {gtotal} ]"
+  },
+  "modalmenu": {
+    "view": "Details anzeigen",
+    "edit": "Aktualisieren",
+    "search": "Suche ...",
+    "asearch": "Detaillierte Suche",
+    "filter": "Filtern ...",
+    "close": "Schließen"
+  },
+  "select-language": "Sprache auswählen"
+}

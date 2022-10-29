@@ -1,0 +1,80 @@
+/*! main.scss | Vuero | Css ninja 2020-2021 */
+@font-face {
+  font-family: 'DIN Pro';
+  src: url('/fonts/DINPro-Regular.eot');
+  src: url('/fonts/DINPro-Regular.eot') format('embedded-opentype'),
+    url('/fonts/DINPro-Regular.woff2') format('woff2'),
+    url('/fonts/DINPro-Regular.woff') format('woff'),
+    url('/fonts/DINPro-Regular.ttf') format('truetype'),
+    url('/fonts/DINPro-Regular.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+/* ==========================================================================
+SCSS Imports
+========================================================================== */
+
+@import './abstracts/_variables.scss';
+@import './abstracts/_mixins.scss';
+@import 'bulma/bulma.sass';
+@import './abstracts/_typography.scss';
+@import './abstracts/_animations.scss';
+@import './abstracts/_transitions.scss';
+@import './abstracts/_helpers.scss';
+
+@import './layout/_layout.scss';
+@import './layout/_utilities.scss';
+
+@import './elements/_buttons.scss';
+@import './elements/_blocks.scss';
+@import './elements/_cards.scss';
+@import './elements/_content.scss';
+@import './elements/_forms-general.scss';
+@import './elements/_forms-combos.scss';
+@import './elements/_forms-checkboxes.scss';
+@import './elements/_forms-slider.scss';
+@import './elements/_forms-multiselect.scss';
+@import './elements/_icons.scss';
+@import './elements/_links.scss';
+@import './elements/_lists.scss';
+@import './elements/_tags.scss';
+
+@import './components/_nprogress.scss';
+@import './components/_accordion.scss';
+@import './components/_breadcrumbs.scss';
+@import './components/_datepicker.scss';
+@import './components/_dropdowns.scss';
+@import './components/_editors.scss';
+@import './components/_modals.scss';
+@import './components/_message.scss';
+@import './components/_media.scss';
+@import './components/_charts.scss';
+@import './components/_loader.scss';
+@import './components/_toggles.scss';
+@import './components/_video-player.scss';
+@import './components/_placeholders.scss';
+@import './components/_popovers.scss';
+@import './components/_progress.scss';
+@import './components/_theme-switch.scss';
+@import './components/_avatar.scss';
+@import './components/_snacks.scss';
+@import './components/_tabs.scss';
+@import './components/_table.scss';
+@import './components/_datatable.scss';
+@import './components/_toasts.scss';
+@import './components/_toolbar.scss';
+@import './components/_tooltips.scss';
+@import './components/_circle-chart.scss';
+@import './components/_ckeditor.scss';
+
+@import './pages/demo/_demo.scss';
+@import './pages/generic/_widgets.scss';
+
+@import './layout/_responsive.scss';
+
+@import './abstracts/_dark.scss';
+@import './quasar/overrides.css';
+@import './quasar/styles.css';
+@import './quasar/devices.min.css';
+@import './extensions/_all.sass';

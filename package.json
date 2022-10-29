@@ -1,0 +1,59 @@
+{
+  "name": "vue3-beakdatatable",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "files": ["dist"],
+  "main": "./dist/vue3-beakdatatable-lib.umd.js",
+  "module": "./dist/vue3-beakdatatable-lib.es.js",
+  "exports": {
+    ".": {
+      "import": "./dist/vue3-beakdatatable-lib.es.js",
+      "require": "./dist/vue3-beakdatatable-lib.umd.js"
+    }
+  },  
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "-": "^0.0.1",
+    "@iconify/iconify": "^3.0.0",
+    "@vue/compiler-sfc": "^3.2.41",
+    "@vueuse/core": "^9.4.0",
+    "bulma": "^0.9.4",
+    "vue": "^3.2.41"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.6",
+    "@babel/eslint-parser": "^7.19.1",
+    "@iconify/json": "^2.1.123",
+    "@intlify/vite-plugin-vue-i18n": "^6.0.3",
+    "@types/node": "^18.11.4",
+    "@typescript-eslint/eslint-plugin": "^5.40.1",
+    "@vitejs/plugin-vue": "^3.1.0",
+    "eslint": "^8.26.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-config-standard-with-typescript": "^23.0.0",
+    "eslint-plugin-import": "^2.26.0",
+    "eslint-plugin-n": "^15.3.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-promise": "^6.1.1",
+    "eslint-plugin-vue": "^9.6.0",
+    "path": "^0.12.7",
+    "prettier": "^2.7.1",
+    "sass": "^1.55.0",
+    "typescript": "^4.8.4",
+    "unplugin-vue-components": "^0.22.8",
+    "vite": "^3.1.0",
+    "vite-imagetools": "^4.0.11",
+    "vite-plugin-components": "^0.12.2",
+    "vite-plugin-eslint": "^1.8.1",
+    "vite-plugin-fonts": "^0.6.0",
+    "vite-plugin-purge-icons": "^0.9.1",
+    "vue-i18n": "^9.2.2",
+    "vue-router": "^4.1.5",
+    "vue-tsc": "^0.40.4"
+  }
+}

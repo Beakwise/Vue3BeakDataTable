@@ -1,0 +1,57 @@
+/** QUILL OPTIONS */
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+/* why? ==> Quill editor adds margin to paragraphs
+ p {
+  margin: 0 !important;
+} */
+
+/* TINYMCE STYLES  */
+.mce-content-body div.mce-resizehandle {
+  background-color: var(--b-primary);
+  border-color: var(--b-primary);
+  z-index: 1 !important;
+}
+
+.mce-content-body audio[data-mce-selected],
+.mce-content-body embed[data-mce-selected],
+.mce-content-body img[data-mce-selected],
+.mce-content-body object[data-mce-selected],
+.mce-content-body table[data-mce-selected],
+.mce-content-body video[data-mce-selected] {
+  outline-color: var(--b-primary-light) !important;
+}
+
+/* change expansion icon color */
+.notranslate.material-icons.q-icon.q-expansion-item__toggle-icon.q-expansion-item__toggle-icon--rotated {
+  color: white !important;
+}
+
+/* quasar q-header has z-index 2000
+  so the text editor would go under it for
+  the very top elements
+ */
+.tox.tox-tinymce.tox-tinymce-inline.tox-tinymce--toolbar-sticky-off {
+  z-index: 2000 !important;
+}
+
+/*
+since editor toolbar z-index is changed
+if dialog z-index is not higher than that,
+the editor would be visible over the dialog */
+.tox-dialog-wrap,
+.tox-tinymce-aux {
+  z-index: 2001 !important;
+}
+
+/*
+  previous two modifications cause the color picker
+  in the table editor to go under the editor toolbar.
+*/
+.tox-dialog__popups {
+  z-index: 2002 !important;
+}
+
+.tox-menu.tox-collection.tox-collection--list.tox-selected-menu {
+  z-index: 2002 !important;
+}

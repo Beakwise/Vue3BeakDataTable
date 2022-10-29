@@ -1,0 +1,30 @@
+{
+  "error": {
+    "network": "Servise erişim sağlanamadı, internet erişiminizi kontrol ediniz",
+    "system": "Sistemsel hata oluştu, lütfen daha sonra tekrar deneyiniz"
+  },
+  "button": {
+    "discard": "Geri Dön",
+    "savechanges": "Değişiklikleri Kaydet",
+    "goback": "Geri Dön",
+    "cancel": "Kaydetmeden Çık",
+    "update": "Güncelle",
+    "create": "Yeni Yarat"
+  },
+  "paging": {
+    "placeholder": "Kayıt Sayısı Belirleyin",
+    "records": "Kayıt",
+    "nodata1": "Kayıt Bulunamadı",
+    "nodata2": "Arama Sonucuna Uygun Kayıt Bulunamadı",
+    "showlabel": "[ Gösterilen: {start} - {end} ] [ Listelenen: {total} ] [ Toplam Adet: {gtotal} ]"
+  },
+  "modalmenu": {
+    "view": "Detay Gör",
+    "edit": "Güncelle",
+    "search": "Ara ...",
+    "asearch": "Detaylı Ara",
+    "filter": "Filtrele ...",
+    "close": "Kapat"
+  },
+  "select-language": "Dil Seçin"
+}

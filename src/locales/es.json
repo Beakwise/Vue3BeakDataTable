@@ -1,0 +1,31 @@
+
+{
+  "error": {
+    "network": "No se pudo acceder al servicio, verifique su acceso a Internet",
+    "system": "Ocurrió un error del sistema, inténtalo de nuevo más tarde"
+  },
+  "button": {
+    "discard": "Volver",
+    "savechanges": "Guardar Cambios",
+    "goback": "Regresar",
+    "cancel": "Salir Sin Guardar",
+    "update": "Actualizar",
+    "create": "Crear Nuevo"
+  },
+  "paging": {
+    "placeholder": "Establecer Número de Registros",
+    "records": "Registros",
+    "nodata1": "Registro no Encontrado",
+    "nodata2": "No se encontraron registros para el resultado de la búsqueda",
+    "showlabel": "[ Mostrado: {start} - {end} ] [ Listado: {total} ] [ Cantidad total: {gtotal} ]"
+  },
+  "modalmenu": {
+    "view": "Ver Detalle",
+    "edit": "Actualizar",
+    "search": "Buscar ...",
+    "asearch": "Búsqueda Detallada",
+    "filter": "Filtro ...",
+    "close": "Cerca"
+  },
+  "select-language": "Seleccione el idioma"
+}

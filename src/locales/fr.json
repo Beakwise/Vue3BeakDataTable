@@ -1,0 +1,30 @@
+{
+  "error": {
+    "network": "Impossible d'accéder au service, vérifiez votre accès Internet",
+    "system": "Une erreur système s'est produite, veuillez réessayer plus tard"
+  },
+  "button": {
+    "discard": "Retourner",
+    "savechanges": "Enregistrer les modifications",
+    "goback": "Revenir en arrière",
+    "cancel": "Annuler",
+    "update": "Mettre à jour",
+    "create": "Créer nouveau"
+  },
+  "paging": {
+    "placeholder": "Définir le nombre d'enregistrements",
+    "records": "Enregistrements",
+    "nodata1": "Enregistrement introuvable",
+    "nodata2": "Aucun enregistrement trouvé pour le résultat de la recherche",
+    "showlabel": "[ Visible: {start} - {end} ] [ Listé: {total} ] [ Quantité totale: {gtotal} ]"
+  },
+  "modalmenu": {
+    "view": "Afficher les détails",
+    "edit": "Mettre à jour",
+    "search": "Chercher ...",
+    "asearch": "Recherche détaillée",
+    "filter": "Filtre ...",
+    "close": "Fermer"
+  },
+  "select-language": "Sélectionner la langue"
+}
