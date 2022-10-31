@@ -1,7 +1,6 @@
 # Vue3BeakDataTable
 Vue3 Datatable provided by Beakwise Inc. 
 
-[![npm package](https://badgen.net/npm/v/vue-next-datatable)](https://www.npmjs.com/package/vue-next-datatable)
 ![GitHub last commit](https://img.shields.io/badge/last%20commit-november-yellowgreen)
 ![GitHub repo size in bytes](https://img.shields.io/badge/repo%20size-3MB-brightgreen)
 ![npm version](https://badge.fury.io/js/yarn.svg)
