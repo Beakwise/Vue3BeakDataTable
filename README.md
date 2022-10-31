@@ -220,7 +220,7 @@ export default {
 
 ## Contributing
 
-You can follow the contributing guide listed [here](./.github/CONTRIBUTING.md)
+To contribute you can send your request [here](mailto:info@beakwise.com)
 
 
 ## Contributors
@@ -228,4 +228,4 @@ You can follow the contributing guide listed [here](./.github/CONTRIBUTING.md)
 
 ## License
 
-Vue Next Datatable is open-sourced software licensed under the [MIT](http://opensource.org/licenses/MIT)
+Vue3 Beak Datatable is open-sourced software licensed under the [MIT](http://opensource.org/licenses/MIT)
