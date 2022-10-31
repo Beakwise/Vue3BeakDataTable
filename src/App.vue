@@ -9,6 +9,7 @@ const columns = ref([
     field: 'saleid',
     type: 'string',
     sortable: true,
+    filterable: true,
   },
   {
     label: { en: 'Process Date', tr: 'Süreç Başlama Tarihi' },
@@ -41,6 +42,7 @@ const columns = ref([
     field: 'product',
     type: 'string',
     sortable: true,
+    filterable: true,
   },
   {
     label: { en: 'Amount', tr: 'Teminat Tutarı' },
