@@ -1,6 +1,6 @@
 {
   "name": "vue3-beakdatatable",
-  "private": true,
+  "private": false,
   "version": "1.0.2",
   "type": "module",
   "files": ["dist"],
