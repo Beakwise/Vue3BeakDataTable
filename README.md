@@ -228,4 +228,4 @@ To contribute you can send your request [here](mailto:info@beakwise.com)
 
 ## License
 
-Vue3 Beak Datatable is open-sourced software licensed under the [MIT](http://opensource.org/licenses/MIT)
+Vue3 Beak Datatable is open-sourced software licensed under the [GNU General Public License v3.0](LICENSE)
