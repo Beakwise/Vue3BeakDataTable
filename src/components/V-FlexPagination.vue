@@ -57,7 +57,7 @@ const pages = computed(() => {
 })
 
 const showFirstLink = computed(() => pages.value[0] > 1)
-const showLastLink = computed(() => pages.value[pages.value.length - 1] < lastPage.value)
+const showLastLink = computed(() => pages.value[pages.value?.length - 1] < lastPage.value)
 
 // const paginatedLink = (page = 1) => {
 //   const _page = Math.min(page, lastPage.value)
@@ -129,7 +129,7 @@ onMounted(() => {
         </a>
       </li>
 
-      <li v-if="pages[pages.length - 1] < lastPage - 1">
+      <li v-if="pages[pages?.length - 1] < lastPage - 1">
         <span class="pagination-ellipsis">…</span>
       </li>
 

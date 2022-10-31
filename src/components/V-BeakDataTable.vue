@@ -503,6 +503,9 @@ watch(
 
 <style lang="scss">
 @import '../assets/scss/abstracts/_variables.scss';
+@import '../assets/scss/vendors/font-awesome-v5.css';
+@import '../assets/scss/vendors/line-icons-pro.css';
+@import '../assets/scss/main.scss';
 
 .beakdatatable {
   background-color: transparent;

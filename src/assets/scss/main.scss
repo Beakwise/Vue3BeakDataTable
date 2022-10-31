@@ -42,31 +42,18 @@ SCSS Imports
 
 @import './components/_nprogress.scss';
 @import './components/_accordion.scss';
-@import './components/_breadcrumbs.scss';
 @import './components/_datepicker.scss';
 @import './components/_dropdowns.scss';
-@import './components/_editors.scss';
 @import './components/_modals.scss';
 @import './components/_message.scss';
-@import './components/_media.scss';
-@import './components/_charts.scss';
 @import './components/_loader.scss';
 @import './components/_toggles.scss';
-@import './components/_video-player.scss';
 @import './components/_placeholders.scss';
 @import './components/_popovers.scss';
-@import './components/_progress.scss';
-@import './components/_theme-switch.scss';
 @import './components/_avatar.scss';
-@import './components/_snacks.scss';
 @import './components/_tabs.scss';
 @import './components/_table.scss';
 @import './components/_datatable.scss';
-@import './components/_toasts.scss';
-@import './components/_toolbar.scss';
-@import './components/_tooltips.scss';
-@import './components/_circle-chart.scss';
-@import './components/_ckeditor.scss';
 
 @import './pages/demo/_demo.scss';
 @import './pages/generic/_widgets.scss';
@@ -74,7 +61,4 @@ SCSS Imports
 @import './layout/_responsive.scss';
 
 @import './abstracts/_dark.scss';
-@import './quasar/overrides.css';
-@import './quasar/styles.css';
-@import './quasar/devices.min.css';
 @import './extensions/_all.sass';

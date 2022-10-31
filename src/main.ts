@@ -5,9 +5,9 @@ import Vue3BeakDataTable from './components/V-BeakDataTable.vue'
 
 import '@iconify/iconify'
 import '@purge-icons/generated'
-import './assets/scss/vendors/font-awesome-v5.css'
-import './assets/scss/vendors/line-icons-pro.css'
-import './assets/scss/main.scss'
+// import './assets/scss/vendors/font-awesome-v5.css'
+// import './assets/scss/vendors/line-icons-pro.css'
+// import './assets/scss/main.scss'
 
 const app = createApp(App)
 
