@@ -6,6 +6,13 @@
   "files": [
     "dist"
   ],
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Beakwise/Vue3BeakDataTable.git"
+  },  
   "main": "./dist/vue3-beakdatatable-lib.umd.js",
   "module": "./dist/vue3-beakdatatable-lib.es.js",
   "exports": {
