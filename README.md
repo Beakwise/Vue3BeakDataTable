@@ -9,7 +9,7 @@ Vue3 Beak Datatable is a Lightweight Datatable for Vue 3 by Beakwise Inc.
 
 ## Demo
 
-![DataTable Demo](vue3beakdatatable-demo.png)
+![DataTable Demo](https://github.com/Beakwise/Vue3BeakDataTable/blob/master/vue3beakdatatable-demo.png)
 
 ## Features
 
