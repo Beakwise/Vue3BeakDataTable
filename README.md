@@ -102,7 +102,11 @@ export default {
         startdateorj: '2022-10-19T08:28:21.168273Z',
         amountorj: 0,
         premiumorj: 0,
-        isdisabled: []
+        isdisabled: [
+          {
+            function: 'deleteTask'
+          }
+        ]
       },
     ]
   
