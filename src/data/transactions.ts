@@ -9,6 +9,7 @@ export const transactionList = [
     amount: '€200,000.00',
     premium: '€1,029.51',
     statusText: 'In Progress',
+    statusTextColor: 'info', // primary, secondary, success, info, warning, danger
     cjId: '0d6f8823-f54b-4c97-ab39-56c5ad6ecca2',
     psaleid: 1088,
     isQuotationCreated: true,
@@ -16,7 +17,7 @@ export const transactionList = [
     startdateorj: '2022-10-19T16:53:10.294367Z',
     amountorj: 200000,
     premiumorj: 1029.51,
-    isdisabled: []
+    isdisabled: [],
   },
   {
     saleid: 'BEK999-1080-1432051349',
@@ -35,7 +36,7 @@ export const transactionList = [
     startdateorj: '2022-10-19T08:28:21.168273Z',
     amountorj: 0,
     premiumorj: 0,
-    isdisabled: []
+    isdisabled: [],
   },
   {
     saleid: 'BEK999-1078-100000004483',
@@ -56,9 +57,9 @@ export const transactionList = [
     premiumorj: 602.29,
     isdisabled: [
       {
-        function: 'deleteTask'
-      }
-    ]
+        function: 'deleteTask',
+      },
+    ],
   },
   {
     saleid: 'BEK999-1075-100000004466',
@@ -79,9 +80,9 @@ export const transactionList = [
     premiumorj: 715.56,
     isdisabled: [
       {
-        function: 'deleteTask'
-      }
-    ]
+        function: 'deleteTask',
+      },
+    ],
   },
   {
     saleid: 'BEK999-1074-200-0000703',
@@ -102,9 +103,9 @@ export const transactionList = [
     premiumorj: 739.36,
     isdisabled: [
       {
-        function: 'deleteTask'
-      }
-    ]
+        function: 'deleteTask',
+      },
+    ],
   },
   {
     saleid: 'BEK999-1073-63730204',
@@ -123,7 +124,7 @@ export const transactionList = [
     startdateorj: '2022-10-14T11:28:23.829705Z',
     amountorj: 0,
     premiumorj: 0,
-    isdisabled: []
+    isdisabled: [],
   },
   {
     saleid: 'BEK999-1039-100000004443',
@@ -144,9 +145,9 @@ export const transactionList = [
     premiumorj: 1698.88,
     isdisabled: [
       {
-        function: 'deleteTask'
-      }
-    ]     
+        function: 'deleteTask',
+      },
+    ],
   },
   {
     saleid: 'BEK999-1022-100000004428',
@@ -165,7 +166,7 @@ export const transactionList = [
     startdateorj: '2022-10-10T13:05:28.832067Z',
     amountorj: 270000,
     premiumorj: 4054.22,
-    isdisabled: []
+    isdisabled: [],
   },
   {
     saleid: 'BEK999-1012-100000004416',
@@ -186,9 +187,9 @@ export const transactionList = [
     premiumorj: 254.13,
     isdisabled: [
       {
-        function: 'deleteTask'
-      }
-    ]  
+        function: 'deleteTask',
+      },
+    ],
   },
   {
     saleid: 'BEK999-1009-100000004413',
@@ -207,7 +208,7 @@ export const transactionList = [
     startdateorj: '2022-10-09T15:37:52.586462Z',
     amountorj: 230000,
     premiumorj: 741.01,
-    isdisabled: []
+    isdisabled: [],
   },
   {
     saleid: 'BEK999-1008-100000004412',
@@ -226,7 +227,7 @@ export const transactionList = [
     startdateorj: '2022-10-09T08:40:58.299345Z',
     amountorj: 240,
     premiumorj: 1181.36,
-    isdisabled: []
+    isdisabled: [],
   },
   {
     saleid: 'BEK999-1007-100000004409',
@@ -245,7 +246,7 @@ export const transactionList = [
     startdateorj: '2022-10-08T23:04:16.598986Z',
     amountorj: 200000,
     premiumorj: 396.43,
-    isdisabled: []
+    isdisabled: [],
   },
   {
     saleid: 'BEK999-1006-100000004407',
@@ -264,7 +265,7 @@ export const transactionList = [
     startdateorj: '2022-10-08T20:18:47.645678Z',
     amountorj: 122000,
     premiumorj: 293.69,
-    isdisabled: []
+    isdisabled: [],
   },
   {
     saleid: 'BEK999-1005-100000004406',
@@ -285,9 +286,9 @@ export const transactionList = [
     premiumorj: 9184.34,
     isdisabled: [
       {
-        function: 'deleteTask'
-      }
-    ]  
+        function: 'deleteTask',
+      },
+    ],
   },
   {
     saleid: 'BEK999-1004-1015883105',
@@ -306,7 +307,7 @@ export const transactionList = [
     startdateorj: '2022-10-08T19:18:36.868173Z',
     amountorj: 0,
     premiumorj: 0,
-    isdisabled: []
+    isdisabled: [],
   },
   {
     saleid: 'BEK999-1002-100000004405',
@@ -325,6 +326,6 @@ export const transactionList = [
     startdateorj: '2022-10-08T17:19:28.765827Z',
     amountorj: 145000,
     premiumorj: 1391.46,
-    isdisabled: []
+    isdisabled: [],
   },
 ]

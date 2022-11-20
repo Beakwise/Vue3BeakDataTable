@@ -104,6 +104,8 @@ const onTriggerEvent = (event: any) => {
       sort-by-field="startdateorj"
       sort-direction="asc"
       @trigger-event="onTriggerEvent"
-    />
+    >
+      <template #action> </template>
+    </Vue3BeakData>
   </div>
 </template>
