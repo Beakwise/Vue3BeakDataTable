@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import i18n from './i18n'
-// import Vue3BeakDataTable from './components/V-BeakDataTable.vue'
-import Vue3BeakDataTable from 'vue3-beakdatatable'
+import Vue3BeakDataTable from './components/V-BeakDataTable.vue'
+// import Vue3BeakDataTable from 'vue3-beakdatatable'
 
 import '@iconify/iconify'
 import '@purge-icons/generated'
@@ -13,5 +13,5 @@ import '@purge-icons/generated'
 const app = createApp(App)
 
 app.use(i18n)
-app.component('Vue3BeakData', Vue3BeakDataTable)
+app.component('BwDataTable', Vue3BeakDataTable)
 app.mount('#app')

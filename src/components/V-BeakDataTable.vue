@@ -464,9 +464,15 @@ watch(
                 <span v-if="colm?.type === 'currency'" :data-negative="false" class="dark-text capital">{{
                   displayInCurrency(row[colm?.field], row['currency'], locale, 'Collection')
                 }}</span>
-                <span v-else-if="colm?.type === 'tag'" class="tag is-rounded" :class="[isShowDetail && 'has-pointer-cursor']">{{
-                  row[colm?.field]
-                }}</span>
+                <span
+                  v-else-if="colm?.type === 'tag'"
+                  class="tag is-rounded"
+                  :class="[
+                    isShowDetail && 'has-pointer-cursor',
+                    row[colm?.field + 'Color']?.length > 0 ? 'is-' + row[colm?.field + 'Color'] : 'is-primary',
+                  ]"
+                  >{{ row[colm?.field] }}</span
+                >
                 <span v-else-if="colm?.type === 'file'">
                   <img class="table-icon" :src="'/images/icons/files/' + row[colm?.field] + '-beak.svg'" alt="" />
                 </span>

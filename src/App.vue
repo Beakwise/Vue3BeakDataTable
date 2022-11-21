@@ -94,7 +94,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <Vue3BeakData
+    <BwDataTable
       :beakcolumns="columns"
       :beakrows="transactionList"
       :beakstats="transactionList?.length"
@@ -111,7 +111,6 @@ onMounted(() => {
       sort-direction="asc"
       @trigger-event="onTriggerEvent"
     >
-      <template #action> </template>
-    </Vue3BeakData>
+    </BwDataTable>
   </div>
 </template>
