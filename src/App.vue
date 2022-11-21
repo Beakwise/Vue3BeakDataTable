@@ -81,15 +81,9 @@ const actions = ref([
   },
 ])
 
-const isOnMounted = ref(false)
-
 const onTriggerEvent = (event: any) => {
   console.log('APP Level Func & Data:', event.func, event.rowdata)
 }
-onMounted(() => {
-  console.log('onMounted')
-  isOnMounted.value = true
-})
 </script>
 
 <template>
