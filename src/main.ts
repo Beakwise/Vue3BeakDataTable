@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import i18n from './i18n'
-import Vue3BeakDataTable from './components/V-BeakDataTable.vue'
-// import Vue3BeakDataTable from 'vue3-beakdatatable'
+// import Vue3BeakDataTable from './components/V-BeakDataTable.vue'
+import Vue3BeakDataTable from 'vue3-beakdatatable'
 
 import '@iconify/iconify'
 import '@purge-icons/generated'
