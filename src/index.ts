@@ -1,9 +1,10 @@
-import Vue3BeakDataTable from './components/V-BeakDataTable.vue'
-import Vue3FlexPagination from './components/V-FlexPagination.vue'
+import { App } from 'vue'
+import BWBeakDataTable from './components/V-BeakDataTable.vue'
+import BWFlexPagination from './components/V-FlexPagination.vue'
 
 export default {
-  install: (app, options) => {
-    app.component('Vue3BeakDataTable', Vue3BeakDataTable)
-    app.component('Vue3FlexPagination', Vue3FlexPagination)
+  install: (app: App, options) => {
+    app.component('BWBeakDataTable', BWBeakDataTable)
+    app.component('BWFlexPagination', BWFlexPagination)
   },
 }
