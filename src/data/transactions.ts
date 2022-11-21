@@ -9,7 +9,7 @@ export const transactionList = [
     amount: '€200,000.00',
     premium: '€1,029.51',
     statusText: 'In Progress',
-    statusTextColor: 'info', // primary, secondary, success, info, warning, danger
+    statusTextColor: 'info',
     cjId: '0d6f8823-f54b-4c97-ab39-56c5ad6ecca2',
     psaleid: 1088,
     isQuotationCreated: true,

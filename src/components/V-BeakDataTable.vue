@@ -467,7 +467,10 @@ watch(
                 <span
                   v-else-if="colm?.type === 'tag'"
                   class="tag is-rounded"
-                  :class="[isShowDetail && 'has-pointer-cursor', row[colm?.field + 'Color']?.length > 0 && 'is-' + row[colm?.field + 'Color']]"
+                  :class="
+                    (isShowDetail ? 'has-pointer-cursor' : '',
+                    row[colm?.field + 'Color']?.length > 0 ? 'is-' + row[colm?.field + 'Color'] : 'is-primary')
+                  "
                   >{{ row[colm?.field] }}</span
                 >
                 <span v-else-if="colm?.type === 'file'">
