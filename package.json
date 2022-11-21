@@ -34,8 +34,7 @@
     "@vue/compiler-sfc": "^3.2.41",
     "@vueuse/core": "^9.4.0",
     "bulma": "^0.9.4",
-    "vue": "^3.2.41",
-    "vue3-beakdatatable": "file:vue3-beakdatatable-1.0.10.tgz"
+    "vue": "^3.2.41"  
   },
   "devDependencies": {
     "@babel/core": "^7.19.6",
