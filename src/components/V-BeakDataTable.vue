@@ -506,7 +506,6 @@ watch(
     </div>
   </div>
 </template>
-
 <style lang="scss">
 @import '../assets/scss/abstracts/_variables.scss';
 @import '../assets/scss/vendors/font-awesome-v5.css';
