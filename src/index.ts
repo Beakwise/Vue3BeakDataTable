@@ -1,4 +1,3 @@
-import BWDataTable from './components/V-BeakDataTable.vue'
-import BWFlexPagination from './components/V-FlexPagination.vue'
+import Vue3BeakDataTable from './components/V-BeakDataTable.vue'
 
-export default /*  #__PURE__ */ { BWDataTable, BWFlexPagination }
+export default Vue3BeakDataTable
