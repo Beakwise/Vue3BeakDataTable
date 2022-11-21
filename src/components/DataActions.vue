@@ -1,6 +1,6 @@
 <!-- eslint-disable import/no-absolute-path -->
 <script setup lang="ts">
-import { onMounted, computed } from 'vue'
+import { computed } from 'vue'
 import type { PropType } from 'vue'
 import useDropdown from '/@src/composable/useDropdown'
 import * as gconst from '/@src/utils/globaldefinitions'
@@ -41,10 +41,6 @@ const isRowDisabled = computed((func: string) => {
     })
     return result
   }
-})
-
-onMounted(() => {
-  // console.log('|===>DataActions:', props.actionData, props.locale)
 })
 </script>
 

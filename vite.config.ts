@@ -2,9 +2,7 @@ import { defineConfig } from 'vite'
 import Vue from '@vitejs/plugin-vue'
 import path from 'path'
 import ViteComponents from 'unplugin-vue-components/vite'
-// import VitePluginFonts from 'vite-plugin-fonts'
 import PurgeIcons from 'vite-plugin-purge-icons'
-// import Eslint from 'vite-plugin-eslint'
 import { imagetools } from 'vite-imagetools'
 import VueI18n from '@intlify/vite-plugin-vue-i18n'
 
@@ -50,7 +48,7 @@ export default defineConfig({
         replacement: `/src/`,
       },
     ],
-    //dedupe: ['vue'],
+    dedupe: ['vue'],
   },
   plugins: [
     Vue({
