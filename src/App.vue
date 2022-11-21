@@ -1,6 +1,6 @@
 <!-- eslint-disable import/no-absolute-path -->
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 import { transactionList } from '/@src/data/transactions'
 
 const columns = ref([
@@ -88,7 +88,7 @@ const onTriggerEvent = (event: any) => {
 
 <template>
   <div>
-    <BwDataTable
+    <BWDataTable
       :beakcolumns="columns"
       :beakrows="transactionList"
       :beakstats="transactionList?.length"
@@ -105,6 +105,6 @@ const onTriggerEvent = (event: any) => {
       sort-direction="asc"
       @trigger-event="onTriggerEvent"
     >
-    </BwDataTable>
+    </BWDataTable>
   </div>
 </template>

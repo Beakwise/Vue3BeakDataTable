@@ -1,4 +1,3 @@
-<!-- eslint-disable import/no-absolute-path -->
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
 import type { PropType } from 'vue'

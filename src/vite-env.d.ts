@@ -7,4 +7,4 @@ declare module '*.vue' {
   export default component
 }
 
-// declare module 'vue3-beakdatatable'
+declare module 'vue3-beakdatatable'
