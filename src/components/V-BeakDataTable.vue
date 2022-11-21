@@ -464,22 +464,16 @@ watch(
                 <span v-if="colm?.type === 'currency'" :data-negative="false" class="dark-text capital">{{
                   displayInCurrency(row[colm?.field], row['currency'], locale, 'Collection')
                 }}</span>
-                <span
-                  v-else-if="colm?.type === 'tag'"
-                  class="tag is-rounded"
-                  :class="[
-                    isShowDetail && 'has-pointer-cursor',
-                    row[colm?.field + 'Color']?.length > 0 ? 'is-' + row[colm?.field + 'Color'] : 'is-primary',
-                  ]"
-                  >{{ row[colm?.field] }}</span
-                >
+                <span v-else-if="colm?.type === 'tag'" class="tag is-rounded" :class="[isShowDetail && 'has-pointer-cursor']">{{
+                  row[colm?.field]
+                }}</span>
                 <span v-else-if="colm?.type === 'file'">
                   <img class="table-icon" :src="'/images/icons/files/' + row[colm?.field] + '-beak.svg'" alt="" />
                 </span>
                 <span v-else class="dark-text capital">{{ row[colm?.field] }}</span>
               </td>
               <td v-if="beakAction?.length > 0" data-action="true" data-title="Action">
-                <DataActions :action-data="beakAction" locale="en" @basicfunction="basicFunction($event)(rowidx)" :isdisabled="row['isdisabled']" />
+                <DataActions :action-data="beakAction" locale="en" :isdisabled="row['isdisabled']" @basicfunction="basicFunction($event)(rowidx)" />
               </td>
             </tr>
           </template>
@@ -506,6 +500,7 @@ watch(
     </div>
   </div>
 </template>
+
 <style lang="scss">
 @import '../assets/scss/abstracts/_variables.scss';
 @import '../assets/scss/vendors/font-awesome-v5.css';

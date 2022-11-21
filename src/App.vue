@@ -1,6 +1,6 @@
 <!-- eslint-disable import/no-absolute-path -->
 <script setup lang="ts">
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { transactionList } from '/@src/data/transactions'
 
 const columns = ref([
@@ -81,9 +81,15 @@ const actions = ref([
   },
 ])
 
+const isOnMounted = ref(false)
+
 const onTriggerEvent = (event: any) => {
   console.log('APP Level Func & Data:', event.func, event.rowdata)
 }
+onMounted(() => {
+  console.log('onMounted')
+  isOnMounted.value = true
+})
 </script>
 
 <template>

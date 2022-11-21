@@ -13,6 +13,5 @@ import '@purge-icons/generated'
 const app = createApp(App)
 
 app.use(i18n)
-// eslint-disable-next-line @typescript-eslint/no-unsafe-argument
 app.component('Vue3BeakData', Vue3BeakDataTable)
 app.mount('#app')
