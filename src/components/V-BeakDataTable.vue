@@ -439,8 +439,8 @@ watch(
             <td :colspan="beakAction?.length > 0 ? beakcolumns?.length + 1 : beakcolumns?.length">
               <div class="section-placeholder">
                 <div class="placeholder-content">
-                  <img class="light-image" src="" alt="" />
-                  <img class="dark-image" src="" alt="" />
+                  <img class="light-image" src="/assets/search-4.svg" alt="" />
+                  <img class="dark-image" src="/assets/search-4-dark.svg" alt="" />
                   <h3 class="dark-inverted">{{ t('paging.nodata1') }}</h3>
                   <p>{{ t('paging.nodata2') }}</p>
                 </div>

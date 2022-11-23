@@ -57,7 +57,8 @@ export default defineConfig({
 
     // https://github.com/intlify/vite-plugin-vue-i18n
     VueI18n({
-      include: path.resolve(__dirname, './src/locales/**'),
+      include: path.resolve(__dirname, 'src/locales/**'),
+      runtimeOnly: false,
     }),
 
     // https://github.com/antfu/purge-icons/tree/main/packages/vite-plugin-purge-icons

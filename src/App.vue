@@ -2,6 +2,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { transactionList } from '/@src/data/transactions'
+import { emptyList } from '/@src/data/emptylist'
 
 const columns = ref([
   {
@@ -90,8 +91,8 @@ const onTriggerEvent = (event: any) => {
   <div>
     <BWDataTable
       :beakcolumns="columns"
-      :beakrows="transactionList"
-      :beakstats="transactionList?.length"
+      :beakrows="emptyList"
+      :beakstats="emptyList?.length"
       :beak-action="actions"
       :is-show-line-number="false"
       :is-show-detail="false"
