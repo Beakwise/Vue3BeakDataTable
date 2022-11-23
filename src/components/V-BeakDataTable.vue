@@ -293,7 +293,7 @@ onMounted(() => {
   locale.value = props.locale
   if (isColmFilter.value) {
     let checkFilterValidity = false
-    props.beakcolumns.forEach((colm: any, index) => {
+    props.beakcolumns?.forEach((colm: any, index) => {
       if (colm.filterable) {
         checkFilterValidity = true
       }
@@ -357,7 +357,7 @@ watch(
     isColmFilter.value = newValue
     if (isColmFilter.value) {
       let checkFilterValidity = false
-      props.beakcolumns.forEach((colm: any, index) => {
+      props.beakcolumns?.forEach((colm: any, index) => {
         if (colm.filterable) {
           checkFilterValidity = true
         }
