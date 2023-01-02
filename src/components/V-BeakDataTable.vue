@@ -383,7 +383,7 @@ const onChange = (event: any) => {
     const cols = table.querySelectorAll('th')
 
     // Loop over them
-    ;[].forEach.call(cols, function (col) {
+    ;[].forEach.call(cols, function (col: any) {
       // Create a resizer element
       const resizer = document.createElement('div')
       resizer.classList.add('resizer')
@@ -544,17 +544,7 @@ watch(
           <thead>
             <tr>
               <th v-if="isShowLineNumber">Row-ID</th>
-              <th
-                v-for="(colm, index) in beakcolumns"
-                :id="'th' + index"
-                :key="index"
-                :style="'--data-width:' + beakcolumns?.length"
-                scope="col"
-                @mousemove="onMouseMove"
-                @mouseout="onMouseLeave"
-                @mouseup="onMouseUp"
-                @mousedown="onMouseDownOwn"
-              >
+              <th v-for="(colm, index) in beakcolumns" :id="'th' + index" :key="index" :style="'--data-width:' + beakcolumns?.length" scope="col">
                 <span class="is-media is-grow" @click="sort(colm?.field, colm?.sortable, colm?.type)">
                   <i v-if="sortDefault(colm?.field, colm?.sortable, colm?.type)" class="lnil lnil-sort"></i>
                   <i v-else-if="sortIcon(colm?.field, colm?.sortable, colm?.type) && sortAsc" class="lnil lnil-sort-amount-asc is-active"></i>
