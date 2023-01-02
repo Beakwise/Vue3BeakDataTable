@@ -1,9 +1,15 @@
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, onMounted, ref, watch, onBeforeUnmount } from 'vue'
 import type { PropType } from 'vue'
 import { useI18n } from 'vue-i18n'
 
 const { locale, t } = useI18n()
+
+const startOffset = ref()
+const tableColumnId = ref()
+const resizable = ref(false)
+const isMobile = ref(false)
+const resizeMe = ref()
 
 const props = defineProps({
   beakcolumns: {
@@ -58,6 +64,11 @@ const props = defineProps({
     type: Boolean,
     required: false,
     default: false,
+  },
+  isResizable: {
+    type: Boolean,
+    required: false,
+    default: true,
   },
   beakAction: {
     type: Array,
@@ -282,6 +293,114 @@ const basicFunction = (event: any) => (rowindex: number) => {
   emit('triggerEvent', { func: event.data, rowdata: sortedData.value[rowindex] })
 }
 
+// const onMouseDown = (event: any) => {
+//   console.log('onMouseDown:', event, event.srcElement.offsetWidth, event.srcElement.offsetWidth - event.pageX)
+//   tableColumnId.value = event.srcElement.offsetParent.id
+//   startOffset.value = event.srcElement.offsetParent.offsetWidth - event.pageX
+//   isPressed.value = true
+// }
+
+// const onMouseDownOwn = (event: any) => {
+//   console.log('onMouseDownOwn:', event, event.srcElement.offsetWidth, event.srcElement.offsetWidth - event.pageX)
+//   tableColumnId.value = event.srcElement.id
+//   startOffset.value = event.srcElement.offsetWidth - event.pageX
+//   isPressed.value = true
+// }
+
+// const onMouseMove = (event: any) => {
+//   console.log('onMouseMove:', event)
+//   if (isPressed.value && event.srcElement.id === tableColumnId.value) event.srcElement.width = startOffset.value + event.pageX + 'px'
+// }
+
+// const onMouseUp = (event: any) => {
+//   console.log('onMouseUp:', event.srcElement.width)
+//   isPressed.value = false
+// }
+
+// const onMouseOver = (event: any) => {
+//   console.log('onMouseOver:', event.srcElement.style.borderRightColor)
+//   // event.srcElement.offsetParent.style.borderRightColor = '#264FA1'
+// }
+
+// const onMouseLeave = (event: any) => {
+//   console.log('onMouseLeave:', event.srcElement.style.borderRightColor)
+//   isPressed.value = false
+//   // event.srcElement.style.borderRightColor = ''
+// }
+
+const createResizableColumn = function (col, resizer) {
+  // Track the current position of mouse
+  let x = 0
+  let w = 0
+
+  const mouseDownHandler = function (e) {
+    // Get the current mouse position
+    x = e.clientX
+
+    // Calculate the current width of column
+    const styles = window.getComputedStyle(col)
+    w = parseInt(styles.width, 10)
+
+    // Attach listeners for document's events
+    document.addEventListener('mousemove', mouseMoveHandler)
+    document.addEventListener('mouseup', mouseUpHandler)
+    resizer.classList.add('resizing')
+  }
+
+  const mouseMoveHandler = function (e) {
+    // Determine how far the mouse has been moved
+    const dx = e.clientX - x
+
+    // Update the width of column
+    col.style.width = `${w + dx}px`
+  }
+
+  // When user releases the mouse, remove the existing event listeners
+  const mouseUpHandler = function () {
+    document.removeEventListener('mousemove', mouseMoveHandler)
+    document.removeEventListener('mouseup', mouseUpHandler)
+    resizer.classList.remove('resizing')
+  }
+
+  resizer.addEventListener('mousedown', mouseDownHandler)
+}
+
+const onResize = () => {
+  console.log('window.innerWidth:', window.innerWidth)
+  isMobile.value = window.innerWidth < 600
+  console.log('isMobile:', isMobile.value)
+}
+
+const onChange = (event: any) => {
+  console.log('onChange-td:', event)
+  const rowId = parseInt(event) + 1
+  if (rowId === sortedData.value.length && !isMobile.value) {
+    resizable.value = props.isResizable
+    // Query the table
+    // const table = document.getElementById('resizeMe')
+    const table = resizeMe.value
+    // Query all headers
+    const cols = table.querySelectorAll('th')
+
+    // Loop over them
+    ;[].forEach.call(cols, function (col) {
+      // Create a resizer element
+      const resizer = document.createElement('div')
+      resizer.classList.add('resizer')
+
+      // Set the height
+      // resizer.style.height = `${table.offsetHeight}px`
+      resizer.style.height = '65px'
+
+      // Add a resizer element to the column
+      col.appendChild(resizer)
+
+      // Will be implemented in the next section
+      createResizableColumn(col, resizer)
+    })
+  }
+}
+
 onMounted(() => {
   console.log('V-BeakTable.. Girdi', props.beakcolumns, props.beakrows)
   currentSortDir.value = props.sortDirection
@@ -291,6 +410,9 @@ onMounted(() => {
   rowId.value = 1
   isColmFilter.value = props.isColumnFilter
   locale.value = props.locale
+  resizable.value = false
+  onResize()
+  window.addEventListener('resize', onResize, { passive: true })
   if (isColmFilter.value) {
     let checkFilterValidity = false
     props.beakcolumns?.forEach((colm: any, index) => {
@@ -301,6 +423,12 @@ onMounted(() => {
     if (!checkFilterValidity && props.isColumnFilter) {
       isColmFilter.value = false
     }
+  }
+})
+
+onBeforeUnmount(() => {
+  if (typeof window !== 'undefined') {
+    window.removeEventListener('resize', onResize, true)
   }
 })
 
@@ -408,11 +536,25 @@ watch(
       </div>
       <div class="beaktable-body">
         <!-- Datatable -->
-        <table class="table is-fullwidth responsive-table" :class="[isStriped && 'is-striped-rows', isHeadColored && 'is-header-colored']">
+        <table
+          ref="resizeMe"
+          class="table is-fullwidth responsive-table"
+          :class="[isStriped && 'is-striped-rows', isHeadColored && 'is-header-colored']"
+        >
           <thead>
             <tr>
               <th v-if="isShowLineNumber">Row-ID</th>
-              <th v-for="(colm, index) in beakcolumns" :key="index" :style="'--data-width:' + beakcolumns?.length" scope="col">
+              <th
+                v-for="(colm, index) in beakcolumns"
+                :id="'th' + index"
+                :key="index"
+                :style="'--data-width:' + beakcolumns?.length"
+                scope="col"
+                @mousemove="onMouseMove"
+                @mouseout="onMouseLeave"
+                @mouseup="onMouseUp"
+                @mousedown="onMouseDownOwn"
+              >
                 <span class="is-media is-grow" @click="sort(colm?.field, colm?.sortable, colm?.type)">
                   <i v-if="sortDefault(colm?.field, colm?.sortable, colm?.type)" class="lnil lnil-sort"></i>
                   <i v-else-if="sortIcon(colm?.field, colm?.sortable, colm?.type) && sortAsc" class="lnil lnil-sort-amount-asc is-active"></i>
@@ -449,6 +591,7 @@ watch(
           </tr>
           <template v-for="(row, rowidx) in sortedData" :key="rowidx">
             <tr>
+              <input type="hidden" name="custId" :value="rowidx" :oninput="onChange(rowidx)" />
               <td v-if="isShowLineNumber">
                 {{ rowidx + 1 + pageSize * (currentPage - 1) }}
               </td>
@@ -460,22 +603,24 @@ watch(
                 :data-fileicon="colm?.type === 'file' ? true : false"
                 :data-title="colm?.label[locale]"
               >
-                <span v-if="colm?.type === 'currency'" :data-negative="false" class="dark-text capital">{{
-                  displayInCurrency(row[colm?.field], row['currency'], locale, 'Collection')
-                }}</span>
-                <span
-                  v-else-if="colm?.type === 'tag'"
-                  class="tag is-rounded"
-                  :class="[
-                    isShowDetail && 'has-pointer-cursor',
-                    row[colm?.field + 'Color']?.length > 0 ? 'is-' + row[colm?.field + 'Color'] : 'is-primary',
-                  ]"
-                  >{{ row[colm?.field] }}</span
-                >
-                <span v-else-if="colm?.type === 'file'">
-                  <img class="table-icon" :src="'/images/icons/files/' + row[colm?.field] + '-beak.svg'" alt="" />
-                </span>
-                <span v-else class="dark-text capital">{{ row[colm?.field] }}</span>
+                <slot :name="`item:${colm?.field}`" :item="row" :colm="colm">
+                  <span v-if="colm?.type === 'currency'" :data-negative="false" class="dark-text capital">{{
+                    displayInCurrency(row[colm?.field], row['currency'], locale, 'Collection')
+                  }}</span>
+                  <span
+                    v-else-if="colm?.type === 'tag'"
+                    class="tag is-rounded"
+                    :class="[
+                      isShowDetail && 'has-pointer-cursor',
+                      row[colm?.field + 'Color']?.length > 0 ? 'is-' + row[colm?.field + 'Color'] : 'is-primary',
+                    ]"
+                    >{{ row[colm?.field] }}</span
+                  >
+                  <span v-else-if="colm?.type === 'file'">
+                    <img class="table-icon" :src="'/images/icons/files/' + row[colm?.field] + '-beak.svg'" alt="" />
+                  </span>
+                  <span v-else class="dark-text capital">{{ row[colm?.field] }}</span>
+                </slot>
               </td>
               <td v-if="beakAction?.length > 0" data-action="true" data-title="Action">
                 <DataActions :action-data="beakAction" locale="en" :isdisabled="row['isdisabled']" @basicfunction="basicFunction($event)(rowidx)" />
@@ -539,12 +684,27 @@ watch(
   }
 
   .beaktable-body .table th {
+    position: relative;
     padding: 24px 10px;
     font-size: 0.8rem;
     color: $dark-text;
     text-transform: uppercase;
     border: 1px solid $fade-grey;
     font-weight: 600;
+
+    .resizer {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 5px;
+      cursor: col-resize;
+      user-select: none;
+    }
+
+    .resizer:hover,
+    .resizing {
+      border-right: 4px dashed #8fd3dd;
+    }
   }
 
   .beaktable-body .table th span {

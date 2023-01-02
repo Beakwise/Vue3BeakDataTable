@@ -22,6 +22,8 @@ Vue3 Beak Datatable is a Lightweight Datatable for Vue 3 by Beakwise Inc.
 - [x] Support 5 different locale of en: English, tr: Turkish, de: German, fr: French, es: Spanish
 
 ## Latest Updates
+- Column wise slot usage to add content or apply new style. If not used default content is placed inside cell.
+- Resize columns by mouse
 - For field type = TAG you can set color by creating another field and name it as the same name of TAG field but appended by "Color" word and define color options
 - Color Options: 'primary', 'secondary', 'success', 'info', 'warning', 'danger'
 - To disable single action by applying rules on row data you can push the name of action to 'isdisabled' array field. 

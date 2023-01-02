@@ -10,7 +10,7 @@ const columns = ref([
     field: 'saleid',
     type: 'string',
     sortable: true,
-    filterable: true,
+    filterable: false,
   },
   {
     label: { en: 'Process Date', tr: 'Süreç Başlama Tarihi' },
@@ -43,7 +43,7 @@ const columns = ref([
     field: 'product',
     type: 'string',
     sortable: true,
-    filterable: true,
+    filterable: false,
   },
   {
     label: { en: 'Amount', tr: 'Teminat Tutarı' },
@@ -89,10 +89,10 @@ const onTriggerEvent = (event: any) => {
 
 <template>
   <div>
-    <BWDataTable
+    <V-BeakDataTable
       :beakcolumns="columns"
-      :beakrows="emptyList"
-      :beakstats="emptyList?.length"
+      :beakrows="transactionList"
+      :beakstats="transactionList?.length"
       :beak-action="actions"
       :is-show-line-number="false"
       :is-show-detail="false"
@@ -106,6 +106,9 @@ const onTriggerEvent = (event: any) => {
       sort-direction="asc"
       @trigger-event="onTriggerEvent"
     >
-    </BWDataTable>
+      <template #item:stage="{ item, colm }">
+        <a href="#">{{ item[colm.field] }}</a>
+      </template>
+    </V-BeakDataTable>
   </div>
 </template>
