@@ -22,6 +22,8 @@ Vue3 Beak Datatable is a Lightweight Datatable for Vue 3 by Beakwise Inc.
 - [x] Support 5 different locale of en: English, tr: Turkish, de: German, fr: French, es: Spanish
 
 ## Latest Updates
+- Row based Sub Content can be add and be activated by setting :is-show-detail="true".
+  > If this is set than beaksubcolumns prop must be defined and content must be either filled inside subTableData of main data or placed in slot 
 - Column wise slot usage to add content or apply new style. If not used default content is placed inside cell.
 - Resize columns by mouse
 - For field type = TAG you can set color by creating another field and name it as the same name of TAG field but appended by "Color" word and define color options
@@ -61,10 +63,12 @@ Add to your component
 <template>
    <BWBeakDataTable
       :beakcolumns="columns"
+      :beaksubcolumns="subcolumns"      
       :beakrows="rowsdata"
       :beakstats="rowsdata?.length"
       :beak-action="actions"
       :is-show-line-number="false"
+      :is-show-detail="true"
       :is-column-filter="true"
       :is-striped="false"
       :is-head-colored="true"
@@ -73,7 +77,14 @@ Add to your component
       sort-by-field="startdateorj"
       sort-direction="asc"
       @trigger-event="onTriggerEvent"
-   />
+   >
+    <template #item:stage="{ item, colm }">
+        <a href="#">{{ item[colm.field] }}</a>  --> Any column can be customized
+    </template>
+    <template #subitem:rowslot="{ item, itemkey }"> 
+        <a href="#">Any HTML code can be placed here</a> --> Any row may have customized sub detail 
+    </template>
+  </BWBeakDataTable>
 </template>
 <script>
 import { ref } from 'vue'
@@ -99,7 +110,16 @@ export default {
         startdateorj: '2022-10-19T16:53:10.294367Z',
         amountorj: 200000,
         premiumorj: 1029.51,
-        isdisabled: []
+        isdisabled: [],
+        subTableData: [
+          {
+            run_id: 'Xy76767',
+            collection_way: 'Credit Card',
+            created_date_time: '19.10.2022 11:28:21',
+            updated_date_time: '19.10.2022 11:28:21',
+            trx_message: 'No message',
+          },
+        ],        
       },
       {
         saleid: 'BEK999-1080-1432051349',
@@ -122,7 +142,8 @@ export default {
           {
             function: 'deleteTask'
           }
-        ]
+        ],
+        subTableData: [],
       },
     ]
   
@@ -184,6 +205,43 @@ export default {
         field: 'statusText',
         type: 'tag',
         sortable: true,
+      },
+    ])
+
+    const subcolumns = ref([
+      {
+        label: { en: 'RunId', tr: 'Alt İşlemNo' },
+        field: 'run_id',
+      },
+      {
+        label: { en: 'Customer Name', tr: 'Müşteri Adı-Soyadı' },
+        field: 'insured01',
+        type: 'inherit',
+        // masked: 'F2',
+      },
+      {
+        label: { en: 'C-Way', tr: 'Tahsilat Aracı' },
+        field: 'collection_way',
+      },
+      {
+        label: { en: 'C-Way-No', tr: 'Tahsilat Aracı No' },
+        field: 'c_way_no',
+        // masked: 'F6L4',
+      },
+      {
+        label: { en: 'Created DateTime', tr: 'İşlem Zamanı' },
+        field: 'created_date_time',
+        type: 'datetime',
+      },
+      {
+        label: { en: 'Updated DateTime', tr: 'Son İşlem Zamanı' },
+        field: 'updated_date_time',
+        type: 'datetime',
+      },
+      {
+        label: { en: 'Transaction Message', tr: 'İşlem Sonucu' },
+        field: 'trx_message',
+        type: 'colspan2',
       },
     ])
   

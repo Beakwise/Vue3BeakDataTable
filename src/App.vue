@@ -65,6 +65,43 @@ const columns = ref([
   },
 ])
 
+const subcolumns = ref([
+  {
+    label: { en: 'RunId', tr: 'Alt İşlemNo' },
+    field: 'run_id',
+  },
+  {
+    label: { en: 'Customer Name', tr: 'Müşteri Adı-Soyadı' },
+    field: 'insured01',
+    type: 'inherit',
+    // masked: 'F2',
+  },
+  {
+    label: { en: 'C-Way', tr: 'Tahsilat Aracı' },
+    field: 'collection_way',
+  },
+  {
+    label: { en: 'C-Way-No', tr: 'Tahsilat Aracı No' },
+    field: 'c_way_no',
+    // masked: 'F6L4',
+  },
+  {
+    label: { en: 'Created DateTime', tr: 'İşlem Zamanı' },
+    field: 'created_date_time',
+    type: 'datetime',
+  },
+  {
+    label: { en: 'Updated DateTime', tr: 'Son İşlem Zamanı' },
+    field: 'updated_date_time',
+    type: 'datetime',
+  },
+  {
+    label: { en: 'Transaction Message', tr: 'İşlem Sonucu' },
+    field: 'trx_message',
+    type: 'colspan2',
+  },
+])
+
 const actions = ref([
   {
     title: { en: 'Check-In Task', tr: 'Görev Geri Çağır' },
@@ -91,11 +128,12 @@ const onTriggerEvent = (event: any) => {
   <div>
     <V-BeakDataTable
       :beakcolumns="columns"
+      :beaksubcolumns="subcolumns"
       :beakrows="transactionList"
       :beakstats="transactionList?.length"
       :beak-action="actions"
       :is-show-line-number="false"
-      :is-show-detail="false"
+      :is-show-detail="true"
       :is-column-filter="true"
       :is-global-filter="true"
       :is-striped="false"
@@ -109,6 +147,7 @@ const onTriggerEvent = (event: any) => {
       <template #item:stage="{ item, colm }">
         <a href="#">{{ item[colm.field] }}</a>
       </template>
+      <template #subitem:rowslot="{ item, itemkey }"> <a href="#">Any HTML code can be placed here</a> </template>
     </V-BeakDataTable>
   </div>
 </template>

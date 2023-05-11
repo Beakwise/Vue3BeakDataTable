@@ -18,6 +18,15 @@ export const transactionList = [
     amountorj: 200000,
     premiumorj: 1029.51,
     isdisabled: [],
+    subTableData: [
+      {
+        run_id: 'Xy76767',
+        collection_way: 'Credit Card',
+        created_date_time: '19.10.2022 11:28:21',
+        updated_date_time: '19.10.2022 11:28:21',
+        trx_message: 'No message',
+      },
+    ],
   },
   {
     saleid: 'BEK999-1080-1432051349',
@@ -37,6 +46,7 @@ export const transactionList = [
     amountorj: 0,
     premiumorj: 0,
     isdisabled: [],
+    subTableData: [],
   },
   {
     saleid: 'BEK999-1078-100000004483',
@@ -60,6 +70,7 @@ export const transactionList = [
         function: 'deleteTask',
       },
     ],
+    subTableData: [],
   },
   {
     saleid: 'BEK999-1075-100000004466',
@@ -83,6 +94,7 @@ export const transactionList = [
         function: 'deleteTask',
       },
     ],
+    subTableData: [],
   },
   {
     saleid: 'BEK999-1074-200-0000703',
@@ -106,6 +118,7 @@ export const transactionList = [
         function: 'deleteTask',
       },
     ],
+    subTableData: [],
   },
   {
     saleid: 'BEK999-1073-63730204',
@@ -125,6 +138,7 @@ export const transactionList = [
     amountorj: 0,
     premiumorj: 0,
     isdisabled: [],
+    subTableData: [],
   },
   {
     saleid: 'BEK999-1039-100000004443',
@@ -148,6 +162,7 @@ export const transactionList = [
         function: 'deleteTask',
       },
     ],
+    subTableData: [],
   },
   {
     saleid: 'BEK999-1022-100000004428',
@@ -167,6 +182,7 @@ export const transactionList = [
     amountorj: 270000,
     premiumorj: 4054.22,
     isdisabled: [],
+    subTableData: [],
   },
   {
     saleid: 'BEK999-1012-100000004416',
@@ -190,6 +206,7 @@ export const transactionList = [
         function: 'deleteTask',
       },
     ],
+    subTableData: [],
   },
   {
     saleid: 'BEK999-1009-100000004413',
@@ -209,6 +226,7 @@ export const transactionList = [
     amountorj: 230000,
     premiumorj: 741.01,
     isdisabled: [],
+    subTableData: [],
   },
   {
     saleid: 'BEK999-1008-100000004412',
@@ -228,6 +246,7 @@ export const transactionList = [
     amountorj: 240,
     premiumorj: 1181.36,
     isdisabled: [],
+    subTableData: [],
   },
   {
     saleid: 'BEK999-1007-100000004409',
@@ -247,6 +266,7 @@ export const transactionList = [
     amountorj: 200000,
     premiumorj: 396.43,
     isdisabled: [],
+    subTableData: [],
   },
   {
     saleid: 'BEK999-1006-100000004407',
@@ -266,6 +286,7 @@ export const transactionList = [
     amountorj: 122000,
     premiumorj: 293.69,
     isdisabled: [],
+    subTableData: [],
   },
   {
     saleid: 'BEK999-1005-100000004406',
@@ -289,6 +310,7 @@ export const transactionList = [
         function: 'deleteTask',
       },
     ],
+    subTableData: [],
   },
   {
     saleid: 'BEK999-1004-1015883105',
@@ -308,6 +330,7 @@ export const transactionList = [
     amountorj: 0,
     premiumorj: 0,
     isdisabled: [],
+    subTableData: [],
   },
   {
     saleid: 'BEK999-1002-100000004405',
@@ -327,5 +350,6 @@ export const transactionList = [
     amountorj: 145000,
     premiumorj: 1391.46,
     isdisabled: [],
+    subTableData: [],
   },
 ]

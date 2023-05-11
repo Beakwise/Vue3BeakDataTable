@@ -5,8 +5,6 @@ import { useI18n } from 'vue-i18n'
 
 const { locale, t } = useI18n()
 
-const startOffset = ref()
-const tableColumnId = ref()
 const resizable = ref(false)
 const isMobile = ref(false)
 const resizeMe = ref()
@@ -105,6 +103,7 @@ const currentPage = ref()
 const rowId = ref()
 const colmfilter = ref([])
 const isColmFilter = ref()
+const isShowRowDetail = ref()
 
 const emit = defineEmits(['triggerEvent'])
 
@@ -365,6 +364,14 @@ const createResizableColumn = function (col, resizer) {
   resizer.addEventListener('mousedown', mouseDownHandler)
 }
 
+const rowUniqueKey = computed((rowIndex: number) => {
+  return (rowIndex) => {
+    let result = 'Rw#'
+    result = result + (rowIndex + 1 + pageSize.value * (currentPage.value - 1)).toString()
+    return result
+  }
+})
+
 const onResize = () => {
   console.log('window.innerWidth:', window.innerWidth)
   isMobile.value = window.innerWidth < 600
@@ -372,7 +379,7 @@ const onResize = () => {
 }
 
 const onChange = (event: any) => {
-  console.log('onChange-td:', event)
+  // console.log('onChange-td:', event)
   const rowId = parseInt(event) + 1
   if (rowId === sortedData.value.length && !isMobile.value) {
     resizable.value = props.isResizable
@@ -425,6 +432,20 @@ onMounted(() => {
     }
   }
 })
+
+const viewRowDetail = (ev: any, data: any) => {
+  console.log('data_row.uniqueIx', data)
+  if (data?.length > 0 && data !== isShowRowDetail.value) {
+    isShowRowDetail.value = data
+  } else {
+    isShowRowDetail.value = ''
+  }
+  console.log('isShowRowDetail.value', isShowRowDetail.value)
+}
+
+const convertDate = (date: string, locale: any) => {
+  return new Date(date).toLocaleDateString(locale, { timeZone: 'Europe/Istanbul' })
+}
 
 onBeforeUnmount(() => {
   if (typeof window !== 'undefined') {
@@ -582,8 +603,12 @@ watch(
           <template v-for="(row, rowidx) in sortedData" :key="rowidx">
             <tr>
               <input type="hidden" name="custId" :value="rowidx" :oninput="onChange(rowidx)" />
-              <td v-if="isShowLineNumber">
-                {{ rowidx + 1 + pageSize * (currentPage - 1) }}
+              <td
+                v-if="isShowLineNumber"
+                :class="isShowDetail && row.subTableData?.length > 0 ? 'has-pointer-cursor' : ''"
+                @click="isShowDetail ? viewRowDetail($event, rowUniqueKey(rowidx)) : ''"
+              >
+                {{ rowUniqueKey(rowidx) }}
               </td>
               <td
                 v-for="(colm, colmidx) in beakcolumns"
@@ -592,6 +617,8 @@ watch(
                 :data-status="colm?.type === 'tag' ? true : false"
                 :data-fileicon="colm?.type === 'file' ? true : false"
                 :data-title="colm?.label[locale]"
+                :class="isShowDetail && row.subTableData?.length > 0 ? 'has-pointer-cursor' : ''"
+                @click="isShowDetail ? viewRowDetail($event, rowUniqueKey(rowidx)) : ''"
               >
                 <slot :name="`item:${colm?.field}`" :item="row" :colm="colm">
                   <span v-if="colm?.type === 'currency'" :data-negative="false" class="dark-text capital">{{
@@ -600,10 +627,7 @@ watch(
                   <span
                     v-else-if="colm?.type === 'tag'"
                     class="tag is-rounded"
-                    :class="[
-                      isShowDetail && 'has-pointer-cursor',
-                      row[colm?.field + 'Color']?.length > 0 ? 'is-' + row[colm?.field + 'Color'] : 'is-primary',
-                    ]"
+                    :class="[row[colm?.field + 'Color']?.length > 0 ? 'is-' + row[colm?.field + 'Color'] : 'is-primary']"
                     >{{ row[colm?.field] }}</span
                   >
                   <span v-else-if="colm?.type === 'file'">
@@ -614,6 +638,44 @@ watch(
               </td>
               <td v-if="beakAction?.length > 0" data-action="true" data-title="Action">
                 <DataActions :action-data="beakAction" locale="en" :isdisabled="row['isdisabled']" @basicfunction="basicFunction($event)(rowidx)" />
+              </td>
+            </tr>
+            <tr v-show="isShowRowDetail === rowUniqueKey(rowidx) && isShowDetail && row.subTableData?.length > 0">
+              <td :colspan="beakcolumns?.length + (isShowDetail ? 1 : 0) + (beakAction?.length > 0 ? 1 : 0)">
+                <slot :name="`subitem:rowslot`" :item="row" :itemkey="rowUniqueKey(rowidx)">
+                  <table class="table is-fullwidth" :class="[isStriped && 'is-striped-rows', isHeadColored && 'is-header-colored']">
+                    <tr>
+                      <th
+                        v-for="(colm, index) in beaksubcolumns"
+                        :key="index"
+                        :style="colm.type === 'colspan2' ? '--data-width:' + beaksubcolumns?.length / 3 : '--data-width:' + beaksubcolumns?.length"
+                      >
+                        <span class="is-media is-grow">
+                          {{ colm.label[locale] }}
+                        </span>
+                      </th>
+                    </tr>
+                    <tr v-for="(subrow, subrowidx) in row.subTableData" :key="subrowidx">
+                      <td v-for="(colm, subcolmidx) in beaksubcolumns" :key="subcolmidx">
+                        <span v-if="colm.type === 'inherit'">{{
+                          colm?.masked === 'F2'
+                            ? maskedText(row[colm.field])
+                            : colm?.masked === 'F6L4'
+                            ? maskedPhone(row[colm.field], 6, 4)
+                            : row[colm.field]
+                        }}</span>
+                        <span v-else-if="colm.type === 'datetime'">{{ convertDate(subrow[colm.field], locale) }}</span>
+                        <span v-else class="dark-text capital">{{
+                          colm?.masked === 'F2'
+                            ? maskedText(subrow[colm.field])
+                            : colm?.masked === 'F6L4'
+                            ? maskedPhone(subrow[colm.field], 6, 4)
+                            : subrow[colm.field]
+                        }}</span>
+                      </td>
+                    </tr>
+                  </table>
+                </slot>
               </td>
             </tr>
           </template>
