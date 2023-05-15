@@ -147,7 +147,9 @@ const onTriggerEvent = (event: any) => {
       <template #item:stage="{ item, colm }">
         <a href="#">{{ item[colm.field] }}</a>
       </template>
-      <template #subitem:rowslot="{ item, itemkey }"> <a href="#">Any HTML code can be placed here</a> </template>
+      <template #subitem:rowslot="{ item, itemkey }"> 
+        <div> Buraya Email HTML'i gelip içeriğindeki bilgiler "item" elemanı ile doldurulmalı </div> 
+      </template>
     </V-BeakDataTable>
   </div>
 </template>
