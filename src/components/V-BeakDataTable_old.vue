@@ -9,8 +9,6 @@ const resizable = ref(false)
 const isMobile = ref(false)
 const resizeMe = ref()
 
-type FileType = 'xls' | 'csv'
-
 const props = defineProps({
   beakcolumns: {
     type: Array as PropType<any[]>,
@@ -64,25 +62,6 @@ const props = defineProps({
     type: Boolean,
     required: false,
     default: false,
-  },
-  fileName: {
-    type: String,
-    required: false,
-    default: 'data.xls',
-  },
-  fileType: {
-    type: String as PropType<FileType>,
-    required: false,
-    default: 'xls',
-    validator: (value: FileType) => {
-      // The value must match one of these strings
-      if (['xls', 'csv'].indexOf(value) === -1) {
-        console.warn(`V-BeakDataTable: invalid "${value}" fileType. Should be xls, or csv`)
-        return false
-      }
-
-      return true
-    },
   },
   isResizable: {
     type: Boolean,
@@ -143,9 +122,7 @@ const filteredData = computed(() => {
         if (typeof a[currentSort.value] === 'string' || a[currentSort.value] instanceof String) {
           const _a = a[currentSort.value].toLocaleLowerCase(props.locale)
           const _b = b[currentSort.value].toLocaleLowerCase(props.locale)
-          const _r = _a.localeCompare(_b, props.locale, {
-            sensitivity: 'base',
-          })
+          const _r = _a.localeCompare(_b, props.locale, { sensitivity: 'base' })
           return _r * modifier
         } else {
           let _r = 0
@@ -194,24 +171,6 @@ const filteredData = computed(() => {
       if (!notnullel) result = true
       return result
     })
-})
-
-const lastFileName = computed(() => {
-  let fileName = props.fileName
-  if (props.fileName.includes('.')) {
-    fileName = fileName.substring(0, fileName.indexOf('.')) + '.' + props.fileType
-  } else {
-    fileName = fileName + '.' + props.fileType
-  }
-  return fileName
-})
-
-const jsonFields = computed(() => {
-  const jsonFields = {}
-  props.beakcolumns.forEach((col) => {
-    jsonFields[col.label[locale.value]] = col.field
-  })
-  return jsonFields
 })
 
 const sortIcon = computed((colm: any, sortable: boolean, type: string) => {
@@ -330,10 +289,7 @@ const displayInCurrency = (amount: any, currency: string, locale: any, trxtype: 
 }
 
 const basicFunction = (event: any) => (rowindex: number) => {
-  emit('triggerEvent', {
-    func: event.data,
-    rowdata: sortedData.value[rowindex],
-  })
+  emit('triggerEvent', { func: event.data, rowdata: sortedData.value[rowindex] })
 }
 
 // const onMouseDown = (event: any) => {
@@ -488,9 +444,7 @@ const viewRowDetail = (ev: any, data: any) => {
 }
 
 const convertDate = (date: string, locale: any) => {
-  return new Date(date).toLocaleDateString(locale, {
-    timeZone: 'Europe/Istanbul',
-  })
+  return new Date(date).toLocaleDateString(locale, { timeZone: 'Europe/Istanbul' })
 }
 
 onBeforeUnmount(() => {
@@ -599,12 +553,6 @@ watch(
               <input v-model.trim="filters" class="input custom-text-filter" :placeholder="t('modalmenu.filter')" />
             </V-Control>
           </V-Field>
-        </div>
-
-        <div v-if="filteredData?.length > 0 && isDownloadExcel" class="column is-6 download-excel">
-          <JsonExcel :data="filteredData" :fields="jsonFields" :name="lastFileName" :type="fileType">
-            <i class="iconify" data-icon="vscode-icons:file-type-excel2"></i>
-          </JsonExcel>
         </div>
       </div>
       <div class="beaktable-body">
@@ -816,14 +764,12 @@ watch(
     cursor: pointer;
     font-size: 13px;
   }
-
   .beaktable-body .table th span i.is-active,
   .beaktable-body .table th span svg.is-active {
     color: #10daf7;
     font-weight: 600;
     font-size: 1rem;
   }
-
   .beaktable-body .table th {
     // width: calc(100vw / var(--data-width));
     white-space: nowrap;
@@ -843,7 +789,6 @@ watch(
   .beaktable-body .table td[data-currency='true'] {
     text-align: right;
   }
-
   .beaktable-body .table td[data-status='true'] {
     width: 6rem;
     text-align: center;
@@ -889,25 +834,6 @@ watch(
 
   .has-pointer-cursor {
     cursor: pointer;
-  }
-
-  .download-excel {
-    div {
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      height: 100%;
-      padding-right: 1rem;
-
-      svg {
-        height: 100%;
-        width: auto;
-      }
-
-      svg:hover {
-        cursor: pointer;
-      }
-    }
   }
 }
 

@@ -11,6 +11,7 @@ declare module '@vue/runtime-core' {
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
     VBeakDataTable: typeof import('./src/components/V-BeakDataTable.vue')['default']
+    VBeakDataTable_old: typeof import('./src/components/V-BeakDataTable_old.vue')['default']
     VControl: typeof import('./src/components/V-Control.vue')['default']
     VField: typeof import('./src/components/V-Field.vue')['default']
     VFlexPagination: typeof import('./src/components/V-FlexPagination.vue')['default']

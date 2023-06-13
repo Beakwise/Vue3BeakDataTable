@@ -138,7 +138,10 @@ const onTriggerEvent = (event: any) => {
       :is-global-filter="true"
       :is-striped="false"
       :is-head-colored="true"
+      :is-download-excel="true"
       :given-page-size="20"
+      file-name="TestDeneme.csv"
+      file-type="csv"
       locale="en"
       sort-by-field="startdateorj"
       sort-direction="asc"
@@ -147,8 +150,8 @@ const onTriggerEvent = (event: any) => {
       <template #item:stage="{ item, colm }">
         <a href="#">{{ item[colm.field] }}</a>
       </template>
-      <template #subitem:rowslot="{ item, itemkey }"> 
-        <div> Buraya Email HTML'i gelip içeriğindeki bilgiler "item" elemanı ile doldurulmalı </div> 
+      <template #subitem:rowslot="{ item, itemkey }">
+        <div>Buraya Email HTML'i gelip içeriğindeki bilgiler "item" elemanı ile doldurulmalı</div>
       </template>
     </V-BeakDataTable>
   </div>
