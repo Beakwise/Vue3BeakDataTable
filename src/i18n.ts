@@ -78,7 +78,7 @@ const i18n = createI18n({
     tr,
     es,
     de,
-    fr
+    fr,
   },
   numberFormats,
 })
