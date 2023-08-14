@@ -21,7 +21,9 @@ export const transactionList = [
     subTableData: [
       {
         run_id: 'Xy76767',
+        insured01: 'insured01',
         collection_way: 'Credit Card',
+        collection_way_no: 'Credit Card No',
         created_date_time: '19.10.2022 11:28:21',
         updated_date_time: '19.10.2022 11:28:21',
         trx_message: 'No message',

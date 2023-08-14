@@ -618,11 +618,13 @@ watch(
             <tr>
               <th v-if="isShowLineNumber">Row-ID</th>
               <th v-for="(colm, index) in beakcolumns" :id="'th' + index" :key="index" :style="'--data-width:' + beakcolumns?.length" scope="col">
-                <span class="is-media is-grow" @click="sort(colm?.field, colm?.sortable, colm?.type)">
+                <span class="is-media is-grow data-column" @click="sort(colm?.field, colm?.sortable, colm?.type)">
                   <i v-if="sortDefault(colm?.field, colm?.sortable, colm?.type)" class="lnil lnil-sort"></i>
                   <i v-else-if="sortIcon(colm?.field, colm?.sortable, colm?.type) && sortAsc" class="lnil lnil-sort-amount-asc is-active"></i>
                   <i v-else-if="sortIcon(colm?.field, colm?.sortable, colm?.type) && sortDesc" class="lnil lnil-sort-amount-dsc is-active"></i>
+                  <span>
                   {{ colm?.label[locale] }}
+                  </span>
                 </span>
               </th>
               <th v-if="beakAction?.length > 0" data-action="true" scope="col">
@@ -767,12 +769,20 @@ watch(
 
   .beaktable-body {
     padding: 0.75rem;
+    overflow: scroll;
   }
 
   .beaktable-body .table {
     border: 1px solid $fade-grey;
     border-radius: 5px;
     border-collapse: separate !important;
+  }
+
+  .beaktable-body .data-column{
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 10px;
   }
 
   .beaktable-body .table th {
