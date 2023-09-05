@@ -855,6 +855,8 @@ watch(
 
   .beaktable-body .table td {
     vertical-align: middle;
+    max-width: 7rem;
+    overflow: scroll;
   }
 
   .beaktable-body .table td[data-status='true'] .tag {

@@ -2,7 +2,7 @@ export const transactionList = [
   {
     saleid: 'BEK999-1088-100000004493',
     startdate: '19.10.2022 19:53:10',
-    insured01: 'Haldun Aydoğdu [ 0040008T ]',
+    insured01: 'HgG0axcl1YADpe08Jqto0iooF6r8VRNfB30lAuVssY4yBWqmHJmAHd8nTNYppgrFHgG0axcl1YADpe08Jqto0iooF6r8VRNfB30lAuVssY4yBWqmHJmAHd8nTNYppgrF',
     insured02: '',
     stage: 'Document And Signature',
     product: 'BEAKsecure',
@@ -20,8 +20,10 @@ export const transactionList = [
     isdisabled: [],
     subTableData: [
       {
-        run_id: 'Xy76767',
+        run_id: 'HgG0axcl1YADpe08Jqto0iooF6r8VRNfB30lAuVssY4yBWqmHJmAHd8nTNYppgrFHgG0axcl1YADpe08Jqto0iooF6r8VRNfB30lAuVssY4yBWqmHJmAHd8nTNYppgrF',
+        insured01: 'HgG0axcl1YADpe08Jqto0iooF6r8VRNfB30lAuVssY4yBWqmHJmAHd8nTNYppgrF/1l21QtTfZmd2oFF4tyJZA6/Wc8nTrsop+tnXs/e5svUDXmG2Ini0ox1R90aLqwCJU5J+F2yz4Gdzmt+zOR1Gp8Ot87tiIKtNEpIL27PLhCdvdN/MJ4OZTyTenJsBYdVCHQtcYWLNMgq6U+hjRUADlHIMNv86e0Ny4xt8FCI8DP73AlgLzmds+oDqK/8TVei/+KENbmopV3uMZP64KV01J4R0BILZZSoFRIqQh4szSvvnuGgPIXSH2lYUhwUDMtkSgT6uQo6Xv41GigyyYrEmg==',
         collection_way: 'Credit Card',
+        c_way_no: 'HgG0axcl1YADpe08Jqto0iooF6r8VRNfB30lAuVssY4yBWqmHJmAHd8nTNYppgrF/1l21QtTfZmd2oFF4tyJZA6/Wc8nTrsop+tnXs/e5svUDXmG2Ini0ox1R90aLqwCJU5J+F2yz4Gdzmt+zOR1Gp8Ot87tiIKtNEpIL27PLhCdvdN/MJ4OZTyTenJsBYdVCHQtcYWLNMgq6U+hjRUADlHIMNv86e0Ny4xt8FCI8DP73AlgLzmds+oDqK/8TVei/+KENbmopV3uMZP64KV01J4R0BILZZSoFRIqQh4szSvvnuGgPIXSH2lYUhwUDMtkSgT6uQo6Xv41GigyyYrEmg==',
         created_date_time: '19.10.2022 11:28:21',
         updated_date_time: '19.10.2022 11:28:21',
         trx_message: 'No message',

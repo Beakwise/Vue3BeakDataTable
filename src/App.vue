@@ -126,33 +126,11 @@ const onTriggerEvent = (event: any) => {
 
 <template>
   <div>
-    <V-BeakDataTable
-      :beakcolumns="columns"
-      :beaksubcolumns="subcolumns"
-      :beakrows="transactionList"
-      :beakstats="transactionList?.length"
-      :beak-action="actions"
-      :is-show-line-number="false"
-      :is-show-detail="true"
-      :is-column-filter="true"
-      :is-global-filter="true"
-      :is-striped="false"
-      :is-head-colored="true"
-      :is-download-excel="true"
-      :given-page-size="20"
-      file-name="TestDeneme.csv"
-      file-type="csv"
-      locale="en"
-      sort-by-field="startdateorj"
-      sort-direction="asc"
-      @trigger-event="onTriggerEvent"
-    >
-      <template #item:stage="{ item, colm }">
-        <a href="#">{{ item[colm.field] }}</a>
-      </template>
-      <template #subitem:rowslot="{ item, itemkey }">
-        <div>Buraya Email HTML'i gelip içeriğindeki bilgiler "item" elemanı ile doldurulmalı</div>
-      </template>
+    <V-BeakDataTable :beakcolumns="columns" :beaksubcolumns="subcolumns" :beakrows="transactionList"
+      :beakstats="transactionList?.length" :beak-action="actions" :is-show-line-number="false" :is-show-detail="true"
+      :is-column-filter="true" :is-global-filter="true" :is-striped="false" :is-head-colored="true"
+      :is-download-excel="true" :given-page-size="20" file-name="TestDeneme.csv" file-type="csv" locale="en"
+      sort-by-field="startdateorj" sort-direction="asc" @trigger-event="onTriggerEvent">
     </V-BeakDataTable>
   </div>
 </template>
