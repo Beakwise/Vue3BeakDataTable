@@ -82,7 +82,7 @@ const subcolumns = ref([
   },
   {
     label: { en: 'C-Way-No', tr: 'Tahsilat Aracı No' },
-    field: 'c_way_no',
+    field: 'collection_way_no',
     // masked: 'F6L4',
   },
   {
@@ -126,11 +126,27 @@ const onTriggerEvent = (event: any) => {
 
 <template>
   <div>
-    <V-BeakDataTable :beakcolumns="columns" :beaksubcolumns="subcolumns" :beakrows="transactionList"
-      :beakstats="transactionList?.length" :beak-action="actions" :is-show-line-number="false" :is-show-detail="true"
-      :is-column-filter="true" :is-global-filter="true" :is-striped="false" :is-head-colored="true"
-      :is-download-excel="true" :given-page-size="20" file-name="TestDeneme.csv" file-type="csv" locale="en"
-      sort-by-field="startdateorj" sort-direction="asc" @trigger-event="onTriggerEvent">
+    <V-BeakDataTable
+      :beakcolumns="columns"
+      :beaksubcolumns="subcolumns"
+      :beakrows="transactionList"
+      :beakstats="transactionList?.length"
+      :beak-action="actions"
+      :is-show-line-number="false"
+      :is-show-detail="true"
+      :is-column-filter="true"
+      :is-global-filter="true"
+      :is-striped="false"
+      :is-head-colored="true"
+      :is-download-excel="true"
+      :given-page-size="20"
+      file-name="TestDeneme.csv"
+      file-type="csv"
+      locale="en"
+      sort-by-field="startdateorj"
+      sort-direction="asc"
+      @trigger-event="onTriggerEvent"
+    >
     </V-BeakDataTable>
   </div>
 </template>
