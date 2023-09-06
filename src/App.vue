@@ -24,7 +24,7 @@ const columns = ref([
     label: { en: '1st Life', tr: '1.Sigortalı' },
     field: 'insured01',
     type: 'string',
-    sortable: true,
+    sortable: false,
   },
   {
     label: { en: '2nd Life', tr: '2.Sigortalı' },

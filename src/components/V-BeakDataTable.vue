@@ -618,12 +618,16 @@ watch(
             <tr>
               <th v-if="isShowLineNumber">Row-ID</th>
               <th v-for="(colm, index) in beakcolumns" :id="'th' + index" :key="index" :style="'--data-width:' + beakcolumns?.length" scope="col">
-                <span class="is-media is-grow data-column" @click="sort(colm?.field, colm?.sortable, colm?.type)">
+                <span
+                  class="is-media is-grow"
+                  :class="colm?.sortable ? 'data-column-sortable' : 'data-column'"
+                  @click="sort(colm?.field, colm?.sortable, colm?.type)"
+                >
                   <i v-if="sortDefault(colm?.field, colm?.sortable, colm?.type)" class="lnil lnil-sort"></i>
                   <i v-else-if="sortIcon(colm?.field, colm?.sortable, colm?.type) && sortAsc" class="lnil lnil-sort-amount-asc is-active"></i>
                   <i v-else-if="sortIcon(colm?.field, colm?.sortable, colm?.type) && sortDesc" class="lnil lnil-sort-amount-dsc is-active"></i>
                   <span>
-                  {{ colm?.label[locale] }}
+                    {{ colm?.label[locale] }}
                   </span>
                 </span>
               </th>
@@ -769,7 +773,6 @@ watch(
 
   .beaktable-body {
     padding: 0.75rem;
-    overflow: scroll;
   }
 
   .beaktable-body .table {
@@ -778,8 +781,15 @@ watch(
     border-collapse: separate !important;
   }
 
-  .beaktable-body .data-column{
+  .beaktable-body .data-column-sortable {
     display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    gap: 10px;
+  }
+
+  .beaktable-body .data-column {
+    display: inline-flex;
     flex-direction: row-reverse;
     justify-content: space-between;
     gap: 10px;
@@ -866,7 +876,7 @@ watch(
   .beaktable-body .table td {
     vertical-align: middle;
     max-width: 7rem;
-    overflow: scroll;
+    word-wrap: break-word;
   }
 
   .beaktable-body .table td[data-status='true'] .tag {
