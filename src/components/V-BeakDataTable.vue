@@ -433,22 +433,22 @@ const onChange = (event: any) => {
     // Query all headers
     const cols = table.querySelectorAll('th')
 
-    // Loop over them
-    ;[].forEach.call(cols, function (col: any) {
-      // Create a resizer element
-      const resizer = document.createElement('div')
-      resizer.classList.add('resizer')
+      // Loop over them
+      ;[].forEach.call(cols, function (col: any) {
+        // Create a resizer element
+        const resizer = document.createElement('div')
+        resizer.classList.add('resizer')
 
-      // Set the height
-      // resizer.style.height = `${table.offsetHeight}px`
-      resizer.style.height = '65px'
+        // Set the height
+        // resizer.style.height = `${table.offsetHeight}px`
+        resizer.style.height = '65px'
 
-      // Add a resizer element to the column
-      col.appendChild(resizer)
+        // Add a resizer element to the column
+        col.appendChild(resizer)
 
-      // Will be implemented in the next section
-      createResizableColumn(col, resizer)
-    })
+        // Will be implemented in the next section
+        createResizableColumn(col, resizer)
+      })
   }
 }
 
@@ -601,7 +601,7 @@ watch(
           </V-Field>
         </div>
 
-        <div v-if="filteredData?.length > 0 && isDownloadExcel" class="column is-6 download-excel">
+        <div v-if="filteredData?.length > 0 && isDownloadExcel" class="download-excel">
           <JsonExcel :data="filteredData" :fields="jsonFields" :name="lastFileName" :type="fileType">
             <i class="iconify" data-icon="vscode-icons:file-type-excel2"></i>
           </JsonExcel>
@@ -609,23 +609,20 @@ watch(
       </div>
       <div class="beaktable-body">
         <!-- Datatable -->
-        <table
-          ref="resizeMe"
-          class="table is-fullwidth responsive-table"
-          :class="[isStriped && 'is-striped-rows', isHeadColored && 'is-header-colored']"
-        >
+        <table ref="resizeMe" class="table is-fullwidth responsive-table"
+          :class="[isStriped && 'is-striped-rows', isHeadColored && 'is-header-colored']">
           <thead>
             <tr>
               <th v-if="isShowLineNumber">Row-ID</th>
-              <th v-for="(colm, index) in beakcolumns" :id="'th' + index" :key="index" :style="'--data-width:' + beakcolumns?.length" scope="col">
-                <span
-                  class="is-media is-grow"
-                  :class="colm?.sortable ? 'data-column-sortable' : 'data-column'"
-                  @click="sort(colm?.field, colm?.sortable, colm?.type)"
-                >
+              <th v-for="(colm, index) in beakcolumns" :id="'th' + index" :key="index"
+                :style="'--data-width:' + beakcolumns?.length" scope="col">
+                <span class="is-media is-grow" :class="colm?.sortable ? 'data-column-sortable' : 'data-column'"
+                  @click="sort(colm?.field, colm?.sortable, colm?.type)">
                   <i v-if="sortDefault(colm?.field, colm?.sortable, colm?.type)" class="lnil lnil-sort"></i>
-                  <i v-else-if="sortIcon(colm?.field, colm?.sortable, colm?.type) && sortAsc" class="lnil lnil-sort-amount-asc is-active"></i>
-                  <i v-else-if="sortIcon(colm?.field, colm?.sortable, colm?.type) && sortDesc" class="lnil lnil-sort-amount-dsc is-active"></i>
+                  <i v-else-if="sortIcon(colm?.field, colm?.sortable, colm?.type) && sortAsc"
+                    class="lnil lnil-sort-amount-asc is-active"></i>
+                  <i v-else-if="sortIcon(colm?.field, colm?.sortable, colm?.type) && sortDesc"
+                    class="lnil lnil-sort-amount-dsc is-active"></i>
                   <span>
                     {{ colm?.label[locale] }}
                   </span>
@@ -641,7 +638,8 @@ watch(
             <td v-for="(colm, index) in beakcolumns" :key="index">
               <V-Field v-if="colm?.filterable" class="search">
                 <V-Control icon="feather:search">
-                  <input v-model="colmfilter[index]" class="input custom-text-filter" :placeholder="t('modalmenu.search')" />
+                  <input v-model="colmfilter[index]" class="input custom-text-filter"
+                    :placeholder="t('modalmenu.search')" />
                 </V-Control>
               </V-Field>
             </td>
@@ -661,33 +659,24 @@ watch(
           <template v-for="(row, rowidx) in sortedData" :key="rowidx">
             <tr>
               <input type="hidden" name="custId" :value="rowidx" :oninput="onChange(rowidx)" />
-              <td
-                v-if="isShowLineNumber"
+              <td v-if="isShowLineNumber"
                 :class="isShowDetail && row.subTableData?.length > 0 ? 'has-pointer-cursor' : ''"
-                @click="isShowDetail ? viewRowDetail($event, rowUniqueKey(rowidx)) : ''"
-              >
+                @click="isShowDetail ? viewRowDetail($event, rowUniqueKey(rowidx)) : ''">
                 {{ rowUniqueKey(rowidx) }}
               </td>
-              <td
-                v-for="(colm, colmidx) in beakcolumns"
-                :key="colmidx"
+              <td v-for="(colm, colmidx) in beakcolumns" :key="colmidx"
                 :data-currency="colm?.type === 'currency' ? true : false"
-                :data-status="colm?.type === 'tag' ? true : false"
-                :data-fileicon="colm?.type === 'file' ? true : false"
+                :data-status="colm?.type === 'tag' ? true : false" :data-fileicon="colm?.type === 'file' ? true : false"
                 :data-title="colm?.label[locale]"
                 :class="isShowDetail && row.subTableData?.length > 0 ? 'has-pointer-cursor' : ''"
-                @click="isShowDetail ? viewRowDetail($event, rowUniqueKey(rowidx)) : ''"
-              >
+                @click="isShowDetail ? viewRowDetail($event, rowUniqueKey(rowidx)) : ''">
                 <slot :name="`item:${colm?.field}`" :item="row" :colm="colm">
                   <span v-if="colm?.type === 'currency'" :data-negative="false" class="dark-text capital">{{
                     displayInCurrency(row[colm?.field], row['currency'], locale, 'Collection')
                   }}</span>
-                  <span
-                    v-else-if="colm?.type === 'tag'"
-                    class="tag is-rounded"
-                    :class="[row[colm?.field + 'Color']?.length > 0 ? 'is-' + row[colm?.field + 'Color'] : 'is-primary']"
-                    >{{ row[colm?.field] }}</span
-                  >
+                  <span v-else-if="colm?.type === 'tag'" class="tag is-rounded"
+                    :class="[row[colm?.field + 'Color']?.length > 0 ? 'is-' + row[colm?.field + 'Color'] : 'is-primary']">{{
+                      row[colm?.field] }}</span>
                   <span v-else-if="colm?.type === 'file'">
                     <img class="table-icon" :src="'/images/icons/files/' + row[colm?.field] + '-beak.svg'" alt="" />
                   </span>
@@ -695,19 +684,18 @@ watch(
                 </slot>
               </td>
               <td v-if="beakAction?.length > 0" data-action="true" data-title="Action">
-                <DataActions :action-data="beakAction" locale="en" :isdisabled="row['isdisabled']" @basicfunction="basicFunction($event)(rowidx)" />
+                <DataActions :action-data="beakAction" locale="en" :isdisabled="row['isdisabled']"
+                  @basicfunction="basicFunction($event)(rowidx)" />
               </td>
             </tr>
             <tr v-show="isShowRowDetail === rowUniqueKey(rowidx) && isShowDetail && row.subTableData?.length > 0">
               <td :colspan="beakcolumns?.length + (isShowDetail ? 1 : 0) + (beakAction?.length > 0 ? 1 : 0)">
                 <slot :name="`subitem:rowslot`" :item="row" :itemkey="rowUniqueKey(rowidx)">
-                  <table class="table is-fullwidth" :class="[isStriped && 'is-striped-rows', isHeadColored && 'is-header-colored']">
+                  <table class="table is-fullwidth"
+                    :class="[isStriped && 'is-striped-rows', isHeadColored && 'is-header-colored']">
                     <tr>
-                      <th
-                        v-for="(colm, index) in beaksubcolumns"
-                        :key="index"
-                        :style="colm.type === 'colspan2' ? '--data-width:' + beaksubcolumns?.length / 3 : '--data-width:' + beaksubcolumns?.length"
-                      >
+                      <th v-for="(colm, index) in beaksubcolumns" :key="index"
+                        :style="colm.type === 'colspan2' ? '--data-width:' + beaksubcolumns?.length / 3 : '--data-width:' + beaksubcolumns?.length">
                         <span class="is-media is-grow">
                           {{ colm.label[locale] }}
                         </span>
@@ -730,20 +718,15 @@ watch(
           {{
             t('paging.showlabel', {
               start: (sortedData?.length === 0 ? 0 : (currentPage - 1) * pageSize + 1)?.toLocaleString(locale),
-              end: (currentPage * pageSize > filteredData?.length ? filteredData?.length : currentPage * pageSize)?.toLocaleString(locale),
+              end: (currentPage * pageSize > filteredData?.length ? filteredData?.length : currentPage *
+                pageSize)?.toLocaleString(locale),
               total: filteredData?.length?.toLocaleString(locale),
               gtotal: beakstats?.toLocaleString(locale),
             })
           }}
         </span>
-        <V-FlexPagination
-          v-if="beakrows?.length > pageSize"
-          :item-per-page="parseInt(pageSize)"
-          :total-items="filteredData?.length"
-          :current-page="currentPage"
-          :max-links-displayed="7"
-          @goto="goto"
-        />
+        <V-FlexPagination v-if="beakrows?.length > pageSize" :item-per-page="parseInt(pageSize)"
+          :total-items="filteredData?.length" :current-page="currentPage" :max-links-displayed="7" @goto="goto" />
       </div>
     </div>
   </div>
@@ -765,6 +748,8 @@ watch(
 
   .table-filters {
     display: flex;
+    position: relative;
+    align-items: center;
   }
 
   .select select {
@@ -914,6 +899,14 @@ watch(
   }
 
   .download-excel {
+    height: 3rem;
+    width: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
+
     div {
       display: flex;
       justify-content: flex-end;
