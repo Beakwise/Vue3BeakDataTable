@@ -601,7 +601,7 @@ watch(
           </V-Field>
         </div>
 
-        <div v-if="filteredData?.length > 0 && isDownloadExcel" class="column is-6 download-excel">
+        <div v-if="filteredData?.length > 0 && isDownloadExcel" class="download-excel">
           <JsonExcel :data="filteredData" :fields="jsonFields" :name="lastFileName" :type="fileType">
             <i class="iconify" data-icon="vscode-icons:file-type-excel2"></i>
           </JsonExcel>
@@ -765,6 +765,8 @@ watch(
 
   .table-filters {
     display: flex;
+    position: relative;
+    align-items: center;
   }
 
   .select select {
@@ -914,6 +916,13 @@ watch(
   }
 
   .download-excel {
+    height: 3rem;
+    width: 6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    right: 0;
     div {
       display: flex;
       justify-content: flex-end;
