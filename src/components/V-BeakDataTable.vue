@@ -877,7 +877,8 @@ watch(
 
   .beaktable-body .table td {
     vertical-align: middle;
-    max-width: 7rem;
+    max-width: 12rem;
+    width: auto;
     word-wrap: break-word;
   }
 
