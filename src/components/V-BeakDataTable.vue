@@ -877,9 +877,8 @@ watch(
 
   .beaktable-body .table td {
     vertical-align: middle;
-    max-width: 12rem;
-    width: auto;
-    word-wrap: break-word;
+    // max-width: 12rem;
+    white-space: nowrap;
   }
 
   .beaktable-body .table td[data-status='true'] .tag {

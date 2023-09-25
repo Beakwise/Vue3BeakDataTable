@@ -147,6 +147,18 @@ const onTriggerEvent = (event: any) => {
       sort-direction="asc"
       @trigger-event="onTriggerEvent"
     >
+      <template #item:insured01="{ item, colm }">
+        <div class="field_style">
+          <span>{{ item[colm.field] }}</span>
+        </div>
+      </template>
     </V-BeakDataTable>
   </div>
 </template>
+<style lang="scss">
+.field_style {
+  word-wrap: break-word;
+  max-width: 20rem;
+  white-space: normal !important;
+}
+</style>
