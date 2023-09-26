@@ -22,6 +22,11 @@ const props = defineProps({
     required: false,
     default: null,
   },
+  ishidden: {
+    type: Array,
+    required: false,
+    default: null,
+  },
 })
 
 const emit = defineEmits(['basicfunction'])
@@ -42,6 +47,18 @@ const isRowDisabled = computed((func: string) => {
     return result
   }
 })
+
+const isRowHidden = computed((func: string) => {
+  return (func) => {
+    let result = false
+    props.ishidden?.forEach((fn: any) => {
+      if (fn.function === func) {
+        result = true
+      }
+    })
+    return result
+  }
+})
 </script>
 
 <template>
@@ -53,6 +70,7 @@ const isRowDisabled = computed((func: string) => {
       <div class="dropdown-content">
         <div v-for="(act, actidx) in actionData" :key="actidx">
           <a
+            v-if="!isRowHidden(act.emit)"
             :to="{}"
             class="dropdown-item is-media"
             :class="act.disabled || isRowDisabled(act.emit) ? 'is-disabled' : ''"

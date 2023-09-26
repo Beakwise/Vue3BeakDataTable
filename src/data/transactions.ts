@@ -91,7 +91,7 @@ export const transactionList = [
     startdateorj: '2022-10-14T18:00:49.821712Z',
     amountorj: 200000,
     premiumorj: 715.56,
-    isdisabled: [
+    ishidden: [
       {
         function: 'deleteTask',
       },

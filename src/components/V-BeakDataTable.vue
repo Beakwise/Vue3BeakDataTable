@@ -695,7 +695,13 @@ watch(
                 </slot>
               </td>
               <td v-if="beakAction?.length > 0" data-action="true" data-title="Action">
-                <DataActions :action-data="beakAction" locale="en" :isdisabled="row['isdisabled']" @basicfunction="basicFunction($event)(rowidx)" />
+                <DataActions
+                  :action-data="beakAction"
+                  locale="en"
+                  :isdisabled="row['isdisabled']"
+                  :ishidden="row['ishidden']"
+                  @basicfunction="basicFunction($event)(rowidx)"
+                />
               </td>
             </tr>
             <tr v-show="isShowRowDetail === rowUniqueKey(rowidx) && isShowDetail && row.subTableData?.length > 0">
