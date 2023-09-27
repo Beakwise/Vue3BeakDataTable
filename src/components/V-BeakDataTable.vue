@@ -433,22 +433,22 @@ const onChange = (event: any) => {
     // Query all headers
     const cols = table.querySelectorAll('th')
 
-    // Loop over them
-    ;[].forEach.call(cols, function (col: any) {
-      // Create a resizer element
-      const resizer = document.createElement('div')
-      resizer.classList.add('resizer')
+      // Loop over them
+      ;[].forEach.call(cols, function (col: any) {
+        // Create a resizer element
+        const resizer = document.createElement('div')
+        resizer.classList.add('resizer')
 
-      // Set the height
-      // resizer.style.height = `${table.offsetHeight}px`
-      resizer.style.height = '65px'
+        // Set the height
+        // resizer.style.height = `${table.offsetHeight}px`
+        resizer.style.height = '65px'
 
-      // Add a resizer element to the column
-      col.appendChild(resizer)
+        // Add a resizer element to the column
+        col.appendChild(resizer)
 
-      // Will be implemented in the next section
-      createResizableColumn(col, resizer)
-    })
+        // Will be implemented in the next section
+        createResizableColumn(col, resizer)
+      })
   }
 }
 
@@ -609,23 +609,20 @@ watch(
       </div>
       <div class="beaktable-body">
         <!-- Datatable -->
-        <table
-          ref="resizeMe"
-          class="table is-fullwidth responsive-table"
-          :class="[isStriped && 'is-striped-rows', isHeadColored && 'is-header-colored']"
-        >
+        <table ref="resizeMe" class="table is-fullwidth responsive-table"
+          :class="[isStriped && 'is-striped-rows', isHeadColored && 'is-header-colored']">
           <thead>
             <tr>
               <th v-if="isShowLineNumber">Row-ID</th>
-              <th v-for="(colm, index) in beakcolumns" :id="'th' + index" :key="index" :style="'--data-width:' + beakcolumns?.length" scope="col">
-                <span
-                  class="is-media is-grow"
-                  :class="colm?.sortable ? 'data-column-sortable' : 'data-column'"
-                  @click="sort(colm?.field, colm?.sortable, colm?.type)"
-                >
+              <th v-for="(colm, index) in beakcolumns" :id="'th' + index" :key="index"
+                :style="'--data-width:' + beakcolumns?.length" scope="col">
+                <span class="is-media is-grow" :class="colm?.sortable ? 'data-column-sortable' : 'data-column'"
+                  @click="sort(colm?.field, colm?.sortable, colm?.type)">
                   <i v-if="sortDefault(colm?.field, colm?.sortable, colm?.type)" class="lnil lnil-sort"></i>
-                  <i v-else-if="sortIcon(colm?.field, colm?.sortable, colm?.type) && sortAsc" class="lnil lnil-sort-amount-asc is-active"></i>
-                  <i v-else-if="sortIcon(colm?.field, colm?.sortable, colm?.type) && sortDesc" class="lnil lnil-sort-amount-dsc is-active"></i>
+                  <i v-else-if="sortIcon(colm?.field, colm?.sortable, colm?.type) && sortAsc"
+                    class="lnil lnil-sort-amount-asc is-active"></i>
+                  <i v-else-if="sortIcon(colm?.field, colm?.sortable, colm?.type) && sortDesc"
+                    class="lnil lnil-sort-amount-dsc is-active"></i>
                   <span>
                     {{ colm?.label[locale] }}
                   </span>
@@ -641,7 +638,8 @@ watch(
             <td v-for="(colm, index) in beakcolumns" :key="index">
               <V-Field v-if="colm?.filterable" class="search">
                 <V-Control icon="feather:search">
-                  <input v-model="colmfilter[index]" class="input custom-text-filter" :placeholder="t('modalmenu.search')" />
+                  <input v-model="colmfilter[index]" class="input custom-text-filter"
+                    :placeholder="t('modalmenu.search')" />
                 </V-Control>
               </V-Field>
             </td>
@@ -661,33 +659,24 @@ watch(
           <template v-for="(row, rowidx) in sortedData" :key="rowidx">
             <tr>
               <input type="hidden" name="custId" :value="rowidx" :oninput="onChange(rowidx)" />
-              <td
-                v-if="isShowLineNumber"
+              <td v-if="isShowLineNumber"
                 :class="isShowDetail && row.subTableData?.length > 0 ? 'has-pointer-cursor' : ''"
-                @click="isShowDetail ? viewRowDetail($event, rowUniqueKey(rowidx)) : ''"
-              >
+                @click="isShowDetail ? viewRowDetail($event, rowUniqueKey(rowidx)) : ''">
                 {{ rowUniqueKey(rowidx) }}
               </td>
-              <td
-                v-for="(colm, colmidx) in beakcolumns"
-                :key="colmidx"
+              <td v-for="(colm, colmidx) in beakcolumns" :key="colmidx"
                 :data-currency="colm?.type === 'currency' ? true : false"
-                :data-status="colm?.type === 'tag' ? true : false"
-                :data-fileicon="colm?.type === 'file' ? true : false"
+                :data-status="colm?.type === 'tag' ? true : false" :data-fileicon="colm?.type === 'file' ? true : false"
                 :data-title="colm?.label[locale]"
                 :class="isShowDetail && row.subTableData?.length > 0 ? 'has-pointer-cursor' : ''"
-                @click="isShowDetail ? viewRowDetail($event, rowUniqueKey(rowidx)) : ''"
-              >
+                @click="isShowDetail ? viewRowDetail($event, rowUniqueKey(rowidx)) : ''">
                 <slot :name="`item:${colm?.field}`" :item="row" :colm="colm">
                   <span v-if="colm?.type === 'currency'" :data-negative="false" class="dark-text capital">{{
                     displayInCurrency(row[colm?.field], row['currency'], locale, 'Collection')
                   }}</span>
-                  <span
-                    v-else-if="colm?.type === 'tag'"
-                    class="tag is-rounded"
-                    :class="[row[colm?.field + 'Color']?.length > 0 ? 'is-' + row[colm?.field + 'Color'] : 'is-primary']"
-                    >{{ row[colm?.field] }}</span
-                  >
+                  <span v-else-if="colm?.type === 'tag'" class="tag is-rounded"
+                    :class="[row[colm?.field + 'Color']?.length > 0 ? 'is-' + row[colm?.field + 'Color'] : 'is-primary']">{{
+                      row[colm?.field] }}</span>
                   <span v-else-if="colm?.type === 'file'">
                     <img class="table-icon" :src="'/images/icons/files/' + row[colm?.field] + '-beak.svg'" alt="" />
                   </span>
@@ -703,24 +692,23 @@ watch(
                   @basicfunction="basicFunction($event)(rowidx)"
                 />
               </td>
+              <td class="responsive-blank-cont"></td>
             </tr>
-            <tr v-show="isShowRowDetail === rowUniqueKey(rowidx) && isShowDetail && row.subTableData?.length > 0">
+            <tr class="detail-table" v-show="isShowRowDetail === rowUniqueKey(rowidx) && isShowDetail && row.subTableData?.length > 0">
               <td :colspan="beakcolumns?.length + (isShowDetail ? 1 : 0) + (beakAction?.length > 0 ? 1 : 0)">
                 <slot :name="`subitem:rowslot`" :item="row" :itemkey="rowUniqueKey(rowidx)">
-                  <table class="table is-fullwidth" :class="[isStriped && 'is-striped-rows', isHeadColored && 'is-header-colored']">
+                  <table class="table is-fullwidth responsive-table"
+                    :class="[isStriped && 'is-striped-rows', isHeadColored && 'is-header-colored']">
                     <tr>
-                      <th
-                        v-for="(colm, index) in beaksubcolumns"
-                        :key="index"
-                        :style="colm.type === 'colspan2' ? '--data-width:' + beaksubcolumns?.length / 3 : '--data-width:' + beaksubcolumns?.length"
-                      >
-                        <span class="is-media is-grow">
+                      <td v-for="(colm, index) in beaksubcolumns" :key="index" :data-title="colm?.field"
+                        :style="colm.type === 'colspan2' ? '--data-width:' + beaksubcolumns?.length / 3 : '--data-width:' + beaksubcolumns?.length">
+                        <span class="is-media is-grow colname">
                           {{ colm.label[locale] }}
                         </span>
-                      </th>
+                      </td>
                     </tr>
                     <tr v-for="(subrow, subrowidx) in row.subTableData" :key="subrowidx">
-                      <td v-for="(colm, subcolmidx) in beaksubcolumns" :key="subcolmidx">
+                      <td v-for="(colm, subcolmidx) in beaksubcolumns" :key="subcolmidx" :is-not="true">
                         <span v-if="colm.type === 'inherit'">{{ row[colm.field] }}</span>
                         <span v-else-if="colm.type === 'datetime'">{{ convertDate(subrow[colm.field], locale) }}</span>
                         <span v-else class="dark-text capital">{{ subrow[colm.field] }}</span>
@@ -736,20 +724,15 @@ watch(
           {{
             t('paging.showlabel', {
               start: (sortedData?.length === 0 ? 0 : (currentPage - 1) * pageSize + 1)?.toLocaleString(locale),
-              end: (currentPage * pageSize > filteredData?.length ? filteredData?.length : currentPage * pageSize)?.toLocaleString(locale),
+              end: (currentPage * pageSize > filteredData?.length ? filteredData?.length : currentPage *
+                pageSize)?.toLocaleString(locale),
               total: filteredData?.length?.toLocaleString(locale),
               gtotal: beakstats?.toLocaleString(locale),
             })
           }}
         </span>
-        <V-FlexPagination
-          v-if="beakrows?.length > pageSize"
-          :item-per-page="parseInt(pageSize)"
-          :total-items="filteredData?.length"
-          :current-page="currentPage"
-          :max-links-displayed="7"
-          @goto="goto"
-        />
+        <V-FlexPagination v-if="beakrows?.length > pageSize" :item-per-page="parseInt(pageSize)"
+          :total-items="filteredData?.length" :current-page="currentPage" :max-links-displayed="7" @goto="goto" />
       </div>
     </div>
   </div>
@@ -763,6 +746,10 @@ watch(
 
 .beakdatatable {
   background-color: transparent;
+
+  .responsive-blank-cont{
+    display: none;
+  }
 
   .table-icon {
     height: 32px;
@@ -781,6 +768,7 @@ watch(
 
   .beaktable-body {
     padding: 0.75rem;
+    overflow-x: scroll;
   }
 
   .beaktable-body .table {
@@ -929,6 +917,7 @@ watch(
     justify-content: center;
     position: absolute;
     right: 0;
+
     div {
       display: flex;
       justify-content: flex-end;
@@ -963,14 +952,53 @@ watch(
     background-color: #ccfcfc;
   }
 
+  .beakdatatable .beaktable-body .table.is-header-colored tr:first-child{
+    height: 2rem;
+  }
+
+  .beakdatatable .beaktable-body .table tr .responsive-blank-cont{
+    display: block;
+    height: 2rem;
+    background-color: #aae8f1c7;
+  }
+
+  .table-filters{
+    flex-direction: column;
+    align-items: flex-start!important;
+
+    div:first-child{
+      width: 96%;
+    }
+    div:nth-child(2){
+      width: 92.5%;
+    }
+
+    .download-excel{
+      margin-top: 2.5rem;
+    }
+  }
+
+  .responsive-table{
+    min-width: 400px
+  }
+
   .responsive-table,
   .responsive-table tbody,
   .responsive-table thead,
   .responsive-table tfoot,
   .responsive-table th,
-  .responsive-table tr,
-  .responsive-table td {
+  .responsive-table tr{
     display: block;
+  }
+
+  .responsive-table td {
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .responsive-table td:not([is-not]) {
+    min-width: 400px;
   }
 
   .responsive-table tr th {
@@ -979,24 +1007,56 @@ watch(
     left: -9999px;
   }
 
-  .responsive-table td:before {
+  .responsive-table td:not([is-not]):before {
     content: attr(data-title);
     color: #283252;
     position: relative;
-    top: 50%;
     left: 15px;
-    width: 100%;
     padding-right: 10px;
     font-weight: 600;
-    -webkit-transform: translateY(-50%) translateZ(0);
-    -moz-transform: translateY(-50%);
-    -o-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
     text-transform: uppercase;
+    -webkit-transform: translateY(0) translateZ(0);
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    height: 1.39rem;
   }
 
-  .responsive-table td:not([colspan]):not(.close-product):after {
+  .detail-table .colname{
+    display: none;
+  }
+
+  .detail-table .table{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .detail-table .table td:is-not{
+    overflow: visible; 
+    white-space: normal; 
+    width: 1%;
+    word-break: break-all;
+    position: absolute;
+    background-color:#FFF;
+    border: 1px solid #283252;
+    z-index: 1;
+    padding: 1rem;
+    right: 1rem;
+  }
+
+  .detail-table .table td{
+    overflow: auto;
+    max-width: 100%;
+    background-color: white!important;
+  }
+
+  .detail-table .table tr{
+    max-width: 50%;
+    background-color: white!important;
+  }
+
+  .responsive-table td:not([colspan]):not(.close-product):not([is-not]):after {
     content: '';
     display: block;
     position: absolute;
@@ -1012,6 +1072,23 @@ watch(
 
   .responsive-table td span {
     float: right;
+  }
+
+  .responsive-table td div {
+    overflow: auto;
+  }
+
+  .responsive-table td div:hover {
+    overflow: visible; 
+    white-space: normal; 
+    width: max-content;
+    word-break: break-all;
+    position: absolute;
+    background-color:#FFF;
+    border: 1px solid #283252;
+    z-index: 1;
+    padding: 1rem;
+    right: 1rem;
   }
 
   .responsive-table td .b-funds-item span {
