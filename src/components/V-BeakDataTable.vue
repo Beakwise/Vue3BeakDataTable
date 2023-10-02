@@ -721,9 +721,9 @@ watch(
                     </tr>
                     <tr v-for="(subrow, subrowidx) in row.subTableData" :key="subrowidx">
                       <td v-for="(colm, subcolmidx) in beaksubcolumns" :key="subcolmidx">
-                        <span v-if="colm.type === 'inherit'">{{ row[colm.field] }}</span>
-                        <span v-else-if="colm.type === 'datetime'">{{ convertDate(subrow[colm.field], locale) }}</span>
-                        <span v-else class="dark-text capital">{{ subrow[colm.field] }}</span>
+                        <span v-if="colm.type === 'inherit'">{{ row[colm?.field] ? row[colm?.field] : '-' }}</span>
+                        <span v-else-if="colm.type === 'datetime'">{{ subrow[colm.field] ? convertDate(subrow[colm.field], locale) : '-' }}</span>
+                        <span v-else class="dark-text capital">{{ subrow[colm.field] ? subrow[colm.field] : '-' }}</span>
                       </td>
                     </tr>
                   </table>
