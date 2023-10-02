@@ -122,6 +122,9 @@ const actions = ref([
 const onTriggerEvent = (event: any) => {
   console.log('APP Level Func & Data:', event.func, event.rowdata)
 }
+const onTriggerAction = (event: any) => {
+  console.log('Action Triggered')
+}
 </script>
 
 <template>
@@ -139,6 +142,7 @@ const onTriggerEvent = (event: any) => {
       :is-striped="false"
       :is-head-colored="true"
       :is-download-excel="true"
+      :is-show-action-button="true"
       :given-page-size="20"
       file-name="TestDeneme.csv"
       file-type="csv"
@@ -146,6 +150,7 @@ const onTriggerEvent = (event: any) => {
       sort-by-field="startdateorj"
       sort-direction="asc"
       @trigger-event="onTriggerEvent"
+      @trigger-action="onTriggerAction"
     >
       <template #item:insured01="{ item, colm }">
         <div class="field_style">

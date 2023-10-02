@@ -104,6 +104,11 @@ const props = defineProps({
     required: false,
     default: false,
   },
+  isShowActionButton: {
+    type: Boolean,
+    required: false,
+    default: false,
+  },
   sortByField: {
     type: String,
     required: false,
@@ -125,8 +130,9 @@ const rowId = ref()
 const colmfilter = ref([])
 const isColmFilter = ref()
 const isShowRowDetail = ref()
+// const isLoading = ref(false)
 
-const emit = defineEmits(['triggerEvent'])
+const emit = defineEmits(['triggerEvent', 'triggerAction'])
 
 const filteredData = computed(() => {
   if (!props.beakrows) return props.beakrows
@@ -334,6 +340,11 @@ const basicFunction = (event: any) => (rowindex: number) => {
     func: event.data,
     rowdata: sortedData.value[rowindex],
   })
+}
+
+const basicAction = () => {
+  console.log('basicAction')
+  emit('triggerAction')
 }
 
 // const onMouseDown = (event: any) => {
@@ -600,11 +611,18 @@ watch(
             </V-Control>
           </V-Field>
         </div>
+        <div class="column is-6">
+          <div class="action-buttons">
+            <slot name="basicAction">
+              <V-Button color="primary" raised @click="basicAction"> {{ t('modalmenu.asearch') }} </V-Button>
+            </slot>
 
-        <div v-if="filteredData?.length > 0 && isDownloadExcel" class="download-excel">
-          <JsonExcel :data="filteredData" :fields="jsonFields" :name="lastFileName" :type="fileType">
-            <i class="iconify" data-icon="vscode-icons:file-type-excel2"></i>
-          </JsonExcel>
+            <div v-if="filteredData?.length > 0 && isDownloadExcel" class="download-excel">
+              <JsonExcel :data="filteredData" :fields="jsonFields" :name="lastFileName" :type="fileType">
+                <i class="iconify" data-icon="vscode-icons:file-type-excel2"></i>
+              </JsonExcel>
+            </div>
+          </div>
         </div>
       </div>
       <div class="beaktable-body">
@@ -921,13 +939,19 @@ watch(
     cursor: pointer;
   }
 
+  .action-buttons {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
   .download-excel {
     height: 3rem;
     width: 6rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    position: absolute;
+    position: relative;
     right: 0;
     div {
       display: flex;
