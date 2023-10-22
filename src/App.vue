@@ -152,6 +152,9 @@ const onTriggerAction = (event: any) => {
       @trigger-event="onTriggerEvent"
       @trigger-action="onTriggerAction"
     >
+      <template #item:basicAction>
+        <div class="action_button"></div>
+      </template>
       <template #item:insured01="{ item, colm }">
         <div class="field_style">
           <span>{{ item[colm.field] }}</span>
